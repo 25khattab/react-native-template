@@ -5,16 +5,15 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useColorScheme} from 'react-native';
 
 import {AuthNavigator} from './auth-navigator';
-import {TabNavigator} from './tab-navigator';
 
 import {useAuth, useLayout} from '@/features';
 import {MyDarkTheme, MyLightTheme} from '@/constants/colors';
+import { AppNavigator } from './app-navigator';
 
 const Stack = createNativeStackNavigator();
 
 export const Root = () => {
   const status = useAuth.use.status();
-  // const [isFirstTime] = useIsFirstTime();
   const hideSplash = useCallback(async () => {
     await SplashScreen.hideAsync();
   }, []);
@@ -37,7 +36,7 @@ export const Root = () => {
         {status === 'signedOut' ? (
           <Stack.Screen name="Auth" component={AuthNavigator} />
         ) : (
-          <Stack.Screen name="App" component={TabNavigator} />
+          <Stack.Screen name="App" component={AppNavigator} />
         )}
       </Stack.Group>
     </Stack.Navigator>

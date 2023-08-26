@@ -5,8 +5,9 @@ const screenTypes = {
 };
 export default function (
   /** @type {import('plop').NodePlopAPI} */
-  plop
+  plop,
 ) {
+  plop.load('plop-pack-json-modify');
   plop.setGenerator('component', {
     description: 'Create a component',
     prompts: [
@@ -38,24 +39,81 @@ export default function (
         name: 'name',
         message: "What is this screen's name?",
       },
+      {
+        type: 'input',
+        name: 'screenTitleEn',
+        message: 'What is title of this screen in English?',
+      },
+      {
+        type: 'input',
+        name: 'screenTitleAr',
+        message: 'What is title of this screen in Arabic?',
+      },
     ],
-  actions:[
-    {
-      when(context) {
-        return context.screenType.includes(screenTypes.auth);
-      },
-        type: 'add',
-        path: 'src/screens/auth-screens/{{camelCase name}}/index.tsx',
-        templateFile: 'templates/Screen.tsx.hbs',
+    actions: function (data) {
+      const actions = [];
+      if (data.screenType === screenTypes.auth) {
+        actions.push({
+          type: 'add',
+          path: 'src/screens/auth-screens/{{camelCase name}}/index.tsx',
+          templateFile: 'templates/AuthScreen.tsx.hbs',
+        });
+        actions.push({
+          type: 'append',
+          path: 'src/screens/auth-screens/index.ts',
+          template: "export * from './{{camelCase name}}';",
+        });
+        actions.push({
+          type: 'append',
+          path: 'src/navigation/auth-navigator.tsx',
+          pattern: "// don't remove for generator",
+          template: '\t{{pascalCase name}}: undefined;',
+        });
+      } else if (data.screenType === screenTypes.app) {
+        actions.push({
+          type: 'add',
+          path: 'src/screens/app-screens/{{camelCase name}}/index.tsx',
+          templateFile: 'templates/Screen.tsx.hbs',
+        });
+        actions.push({
+          type: 'append',
+          path: 'src/screens/app-screens/index.ts',
+          template: "export * from './{{camelCase name}}';",
+        });
+        actions.push({
+          type: 'append',
+          path: 'src/navigation/app-navigator.tsx',
+          pattern: "// don't remove for generator (list)",
+          template: '\t{{pascalCase name}}: undefined;',
+        });
+        actions.push({
+          type: 'append',
+          path: 'src/navigation/app-navigator.tsx',
+          pattern: "// don't remove for generator (route)",
+          template:
+            "\t{name: '{{pascalCase name}}', component: {{pascalCase name}}, label: '{{screenTitleEn}}' },",
+          data: {hello: 'omar'},
+        });
+      }
+      actions.push({
+        // Test Objects
+        type: 'json-modify-file', // Strategy to use
+        force: true,
+        JSONFile: './locales/en/translation.json', // The file to modify
+        JSONKey: 'routes', // Where in the json file we add ourselves? - Can do root?
+        JSONEntryKey: '{{pascalCase name}}', // if missing use array
+        JSONEntryValue: '{{screenTitleEn}}',
+      });
+      actions.push({
+        // Test Objects
+        type: 'json-modify-file', // Strategy to use
+        force: true,
+        JSONFile: './locales/ar/translation.json', // The file to modify
+        JSONKey: 'routes', // Where in the json file we add ourselves? - Can do root?
+        JSONEntryKey: '{{pascalCase name}}', // if missing use array
+        JSONEntryValue: '{{screenTitleAr}}',
+      });
+      return actions;
     },
-    {
-      when(context) {
-        return context.screenType.includes(screenTypes.auth);
-      },
-        type: 'append',
-        path: 'src/screens/auth-screens/index.ts',
-        template: "export * from './{{camelCase name}}';",
-    },
-  ]
   });
 }

@@ -1,3 +1,10 @@
 {
-  "hello": "Hello and welcome to the App"
+  "hello": "Hello and welcome to the App",
+  "routes": {
+    "Home":"Welcome",
+    "Settings":"Settings",
+    "Profile":"Profile",
+    "Tab":"test",
+    "Login":"Login"
+  }
 }

@@ -6,8 +6,10 @@ import {useTheme, type RouteProp} from '@react-navigation/native';
 import type {ComponentType} from 'react';
 
 import {Settings, Home} from '@/screens/tab-screens';
+import { useTranslation } from 'react-i18next';
 
 export type AppTabParamList = {
+  // don't remove leave for generator (list)
   Home: undefined;
   Settings: undefined;
 };
@@ -18,12 +20,13 @@ interface TabType {
   label: string;
 }
 
-// type TabIconsType = {
-//   [key in keyof TabParamList]: (props: SvgProps) => JSX.Element;
-// };
+
 
 const Tab = createBottomTabNavigator<AppTabParamList>();
 
+// type TabIconsType = {
+//   [key in keyof TabParamList]: (props: SvgProps) => JSX.Element;
+// };
 // const tabsIcons: TabIconsType = {
 //   Style: (props: SvgProps) => <StyleIcon {...props} />,
 //   FeedNavigator: (props: SvgProps) => <FeedIcon {...props} />,
@@ -36,6 +39,7 @@ export interface AppTabList<T extends keyof AppTabParamList> {
 }
 
 const tabs: TabType[] = [
+  // don't remove leave for generator (tabs)
   {
     name: 'Home',
     component: Home,
@@ -59,6 +63,7 @@ const tabs: TabType[] = [
 // };
 
 export const TabNavigator = () => {
+  const {t}=useTranslation()
   const {colors} = useTheme();
   return (
     <Tab.Navigator
@@ -78,8 +83,7 @@ export const TabNavigator = () => {
               name={name}
               component={component}
               options={{
-                title: label,
-                tabBarTestID: `${name}-tab`,
+                title: t(`routes.${name}`),
               }}
             />
           );

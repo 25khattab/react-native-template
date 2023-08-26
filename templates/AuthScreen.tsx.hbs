@@ -8,9 +8,8 @@ import {useLayout} from '@/features';
 import {AuthNavigationProps} from '@/navigation/types';
 import {SIZES} from '@/constants/spacing';
 
-interface {{pascalCase name}}Props {}
 
-export const {{pascalCase name}} = ({}: {{pascalCase name}}Props) => {
+export const {{pascalCase name}} = () => {
 	const {navigate} = useNavigation<AuthNavigationProps>();
 	const {colors} = useTheme();
   const isRTL = useLayout((state) => state.RTL);

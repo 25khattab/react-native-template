@@ -5,9 +5,10 @@ import type {
 
 import type {AuthStackParamList} from './auth-navigator';
 import {AppTabParamList} from './tab-navigator';
+import { AppStackParamList } from './app-navigator';
 
 // add every new Param list
-export type RootStackParamList = AppTabParamList; //  & FooStackParamList & BarStackParamList
+export type RootStackParamList = AppTabParamList & AppStackParamList; //  & FooStackParamList & BarStackParamList
 
 // auth navigation props should be alone
 
