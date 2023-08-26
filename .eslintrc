@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "plugin:@shopify/typescript",
+    "plugin:@shopify/typescript-type-checking",
+    "plugin:@shopify/react",
+    "plugin:@shopify/prettier"
+  ],
+  "parserOptions": {
+    "project": "tsconfig.json"
+  },
+  "rules": {
+    // ...
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/consistent-type-definitions": "off"
+  }
+}

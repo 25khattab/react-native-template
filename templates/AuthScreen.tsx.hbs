@@ -1,0 +1,33 @@
+import {useNavigation, useTheme} from '@react-navigation/native';
+import {StyleSheet} from 'react-native';
+
+import {ExtendedThemeType} from '@/constants/colors';
+import Text from '@/components/core/Text';
+import View from '@/components/core/View';
+import {useLayout} from '@/features';
+import {AuthNavigationProps} from '@/navigation/types';
+import {SIZES} from '@/constants/spacing';
+
+interface {{pascalCase name}}Props {}
+
+export const {{pascalCase name}} = ({}: {{pascalCase name}}Props) => {
+	const {navigate} = useNavigation<AuthNavigationProps>();
+	const {colors} = useTheme();
+  const isRTL = useLayout((state) => state.RTL);
+  const styles = generateStyles(isRTL, colors);
+  return (
+    <View>
+      <Text> {{pascalCase name}} </Text>
+    </View>
+  );
+};
+
+
+const generateStyles = (isRTL: boolean, colors: ExtendedThemeType['colors']) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+			padding: SIZES.medium,
+    },
+  });
+

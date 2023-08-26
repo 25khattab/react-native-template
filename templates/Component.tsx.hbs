@@ -1,0 +1,31 @@
+import {useTheme} from '@react-navigation/native';
+import {ExtendedThemeType} from '@/constants/colors';
+
+import Text from '@/components/core/Text';
+import View from '@/components/core/View';
+import {useLayout} from '@/features';
+
+interface {{pascalCase name}}Props {}
+
+export const {{pascalCase name}} = ({}: {{pascalCase name}}Props) => {
+  const {colors} = useTheme();
+  const isRTL = useLayout((state) => state.RTL);
+  const styles = generateStyles(isRTL, colors);
+  return (
+    <View>
+      <Text> {{pascalCase name}} </Text>
+    </View>
+  );
+};
+
+
+const generateStyles = (
+  isRTL: boolean,
+  colors: ExtendedThemeType['colors'],
+) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+    },
+  });
+
