@@ -1,7 +1,6 @@
 import 'react-native-gesture-handler';
 import 'i18n';
-import {StatusBar} from 'expo-status-bar';
-import {StyleSheet} from 'react-native';
+import {StyleSheet,StatusBar} from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
@@ -15,7 +14,7 @@ SplashScreen.preventAutoHideAsync();
 export default function App() {
   return (
     <>
-      <StatusBar style="auto" />
+      <StatusBar barStyle={'light-content'} />
       <SafeAreaView style={styles.container}>
         <RootNavigator />
       </SafeAreaView>

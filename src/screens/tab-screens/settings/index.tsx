@@ -1,17 +1,32 @@
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useTheme} from '@react-navigation/native';
 import {Button, StyleSheet} from 'react-native';
 
 import Text from '@/components/core/Text';
 import View from '@/components/core/View';
+import { ExtendedThemeType } from '@/constants/colors';
+import { SIZES } from '@/constants/spacing';
+import { useLayout } from '@/features';
 
 export const Settings = () => {
-  const {navigate} = useNavigation();
+  const navigate = useNavigation();
+  const {colors} = useTheme();
+  const isRTL = useLayout((s) => s.RTL);
+  const styles = generateStyles(isRTL, colors);
   return (
-    <View>
+    <View style={styles.container}>
       <Text>Settings</Text>
-      <Button title="navigate to Home" onPress={() => navigate('Home')} />
+      <Button title="navigate to Home" onPress={() => navigate.navigate('Home')} />
+      <Button title="navigate to profile" onPress={() => navigate.navigate('Profile')} />
+      
     </View>
   );
 };
 
-const styles = (isRTL: boolean) => StyleSheet.create({});
+const generateStyles = (isRTL: boolean, color: ExtendedThemeType['colors']) =>
+StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: SIZES.medium,
+    rowGap:SIZES.large
+  },
+});

@@ -9,7 +9,7 @@ import {SIZES} from '@/constants/spacing';
 
 
 export const {{pascalCase name}} = () => {
-	const {navigate} = useNavigation();
+	const navigate = useNavigation();
 	const {colors} = useTheme();
   const isRTL = useLayout((state) => state.RTL);
   const styles = generateStyles(isRTL, colors);
