@@ -1,18 +1,16 @@
-import {
-  createNativeStackNavigator,
-} from '@react-navigation/native-stack';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {useTranslation} from 'react-i18next';
 
 import {TabNavigator} from './tab-navigator';
-import {Profile} from '@/screens/app-screens';
-import {useTranslation} from 'react-i18next';
 import {IStackRouteType} from './types';
+
+import {Profile} from '@/screens/app-screens';
 
 export type AppStackParamList = {
   // don't remove for generator (list)
   Tab: undefined;
   Profile: undefined;
 };
-
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
 
@@ -23,7 +21,7 @@ const Stack = createNativeStackNavigator<AppStackParamList>();
 
 export const AppNavigator = () => {
   const {t} = useTranslation();
-  const routes: Array<IStackRouteType<AppStackParamList>> = [
+  const routes: IStackRouteType<AppStackParamList>[] = [
     // don't remove for generator (route)
     {
       name: 'Tab',

@@ -1,9 +1,8 @@
-import {authMiddleware} from '@/features/auth';
-import authSlice from '@/features/auth/auth.slice';
-import {layoutMiddleware} from '@/features/layout';
-import layoutSlice from '@/features/layout/layout.slice';
 import {configureStore} from '@reduxjs/toolkit';
 import {setupListeners} from '@reduxjs/toolkit/query';
+
+import {authMiddleware, authSlice} from '@/features/auth';
+import {layoutMiddleware, layoutSlice} from '@/features/layout';
 
 export const store = configureStore({
   reducer: {

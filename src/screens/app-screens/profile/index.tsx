@@ -5,21 +5,18 @@ import Text from '@/components/core/Text';
 import View from '@/components/core/View';
 import {ExtendedThemeType} from '@/constants/colors';
 import {SIZES} from '@/constants/spacing';
-import { useAppSelector } from '@/hooks/redux-hooks';
+import {useAppSelector} from '@/hooks/redux-hooks';
 
 export const Profile = () => {
   const {navigate} = useNavigation();
   const {colors} = useTheme();
-  const isRTL = useAppSelector((s) => s.layout.RTL);
+  const isRTL = useAppSelector((state) => state.layout.RTL);
   const styles = generateStyles(isRTL, colors);
 
   return (
     <View style={styles.container}>
       <Text>Profile</Text>
-      <Button
-        title="navigate to home"
-        onPress={() => navigate('Home')}
-      />
+      <Button title="navigate to home" onPress={() => navigate('Home')} />
     </View>
   );
 };

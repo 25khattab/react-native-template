@@ -1,7 +1,7 @@
-import { createListenerMiddleware } from "@reduxjs/toolkit";
-import authSlice from "./auth.slice";
-import { authStorage } from "./utils";
+import {createListenerMiddleware} from '@reduxjs/toolkit';
 
+import authSlice from './auth.slice';
+import {authStorage} from './utils';
 
 // Create the middleware instance and methods
 export const authMiddleware = createListenerMiddleware();
@@ -11,7 +11,7 @@ export const authMiddleware = createListenerMiddleware();
 authMiddleware.startListening({
   actionCreator: authSlice.actions.setCredentials,
   effect: async (action, listenerApi) => {
-    if (action.payload !== null){
+    if (action.payload !== null) {
       await authStorage.setToken(action.payload);
     }
   },

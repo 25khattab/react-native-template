@@ -1,7 +1,7 @@
 import {Text as RNText, TextProps as RNTextProps} from 'react-native';
 import {useTheme} from '@react-navigation/native';
-import { useAppSelector } from '@/hooks/redux-hooks';
 
+import {useAppSelector} from '@/hooks/redux-hooks';
 
 const Text = (props: RNTextProps) => {
   const isRTL = useAppSelector((state) => state.layout.RTL);

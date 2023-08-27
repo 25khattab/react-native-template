@@ -3,30 +3,35 @@ import {Button, StyleSheet} from 'react-native';
 
 import Text from '@/components/core/Text';
 import View from '@/components/core/View';
-import { ExtendedThemeType } from '@/constants/colors';
-import { SIZES } from '@/constants/spacing';
-import { useAppSelector } from '@/hooks/redux-hooks';
+import {ExtendedThemeType} from '@/constants/colors';
+import {SIZES} from '@/constants/spacing';
+import {useAppSelector} from '@/hooks/redux-hooks';
 
 export const Settings = () => {
   const navigate = useNavigation();
   const {colors} = useTheme();
-  const isRTL = useAppSelector((s) => s.layout.RTL);
+  const isRTL = useAppSelector((state) => state.layout.RTL);
   const styles = generateStyles(isRTL, colors);
   return (
     <View style={styles.container}>
       <Text>Settings</Text>
-      <Button title="navigate to Home" onPress={() => navigate.navigate('Home')} />
-      <Button title="navigate to profile" onPress={() => navigate.navigate('Profile')} />
-      
+      <Button
+        title="navigate to Home"
+        onPress={() => navigate.navigate('Home')}
+      />
+      <Button
+        title="navigate to profile"
+        onPress={() => navigate.navigate('Profile')}
+      />
     </View>
   );
 };
 
 const generateStyles = (isRTL: boolean, color: ExtendedThemeType['colors']) =>
-StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: SIZES.medium,
-    rowGap:SIZES.large
-  },
-});
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      padding: SIZES.medium,
+      rowGap: SIZES.large,
+    },
+  });

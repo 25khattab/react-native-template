@@ -3,20 +3,20 @@ import {useEffect} from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useColorScheme} from 'react-native';
+import {getLocales} from 'expo-localization';
 
 import {AuthNavigator} from './auth-navigator';
+import {AppNavigator} from './app-navigator';
 
 import {MyDarkTheme, MyLightTheme} from '@/constants/colors';
-import {AppNavigator} from './app-navigator';
 import {useAppDispatch, useAppSelector} from '@/hooks/redux-hooks';
 import {authStorage, removeCredentials, setCredentials} from '@/features/auth';
-import {getLocales} from 'expo-localization';
 import {layoutStorage, setLang, setTheme} from '@/features/layout';
 
 const Stack = createNativeStackNavigator();
 
 export const Root = () => {
-  const status = useAppSelector((s) => s.auth.status);
+  const status = useAppSelector((state) => state.auth.status);
   useEffect(() => {
     console.log(status);
     SplashScreen.hideAsync();
@@ -40,7 +40,7 @@ export const Root = () => {
 };
 
 export const RootNavigator = () => {
-  const status = useAppSelector((s) => s.auth.status);
+  const status = useAppSelector((state) => state.auth.status);
   const dispatch = useAppDispatch();
   const hydrateAuth = async () => {
     try {

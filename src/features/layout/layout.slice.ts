@@ -1,6 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 import type {PayloadAction} from '@reduxjs/toolkit';
-import { ThemeType } from './utils';
+
+import {ThemeType} from './utils';
 
 export interface LayoutState {
   RTL: boolean;
@@ -8,7 +9,7 @@ export interface LayoutState {
   theme: ThemeType | null;
 }
 
-const layoutSlice = createSlice({
+export const layoutSlice = createSlice({
   name: 'layout',
   initialState: {RTL: false, lang: 'en', theme: null} as LayoutState,
   reducers: {
@@ -34,5 +35,3 @@ const layoutSlice = createSlice({
 });
 
 export const {setRTL, setLang, setLayoutState, setTheme} = layoutSlice.actions;
-
-export default layoutSlice;
