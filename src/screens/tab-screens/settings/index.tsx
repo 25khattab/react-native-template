@@ -5,12 +5,12 @@ import Text from '@/components/core/Text';
 import View from '@/components/core/View';
 import { ExtendedThemeType } from '@/constants/colors';
 import { SIZES } from '@/constants/spacing';
-import { useLayout } from '@/features';
+import { useAppSelector } from '@/hooks/redux-hooks';
 
 export const Settings = () => {
   const navigate = useNavigation();
   const {colors} = useTheme();
-  const isRTL = useLayout((s) => s.RTL);
+  const isRTL = useAppSelector((s) => s.layout.RTL);
   const styles = generateStyles(isRTL, colors);
   return (
     <View style={styles.container}>

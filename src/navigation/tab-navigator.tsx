@@ -69,13 +69,10 @@ export const TabNavigator = () => {
     <Tab.Navigator
       screenOptions={({route}) => ({
         tabBarActiveTintColor: colors.backgroundTertiary,
+        headerStyle:{backgroundColor:"red"}
       })}
     >
-      <Tab.Group
-        screenOptions={{
-          headerShown: false,
-        }}
-      >
+     
         {tabs.map(({name, component, label}) => {
           return (
             <Tab.Screen
@@ -88,7 +85,7 @@ export const TabNavigator = () => {
             />
           );
         })}
-      </Tab.Group>
+     
     </Tab.Navigator>
   );
 };

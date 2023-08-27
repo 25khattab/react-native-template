@@ -1,10 +1,10 @@
 import {Text as RNText, TextProps as RNTextProps} from 'react-native';
 import {useTheme} from '@react-navigation/native';
+import { useAppSelector } from '@/hooks/redux-hooks';
 
-import {useLayout} from '@/features';
 
 const Text = (props: RNTextProps) => {
-  const isRTL = useLayout((state) => state.RTL);
+  const isRTL = useAppSelector((state) => state.layout.RTL);
   const {colors} = useTheme();
 
   return (

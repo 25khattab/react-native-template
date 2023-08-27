@@ -6,12 +6,13 @@ import Text from '@/components/core/Text';
 import View from '@/components/core/View';
 import {useLayout} from '@/features';
 import {SIZES} from '@/constants/spacing';
+import { useAppSelector } from '@/hooks/redux-hooks';
 
 
 export const {{pascalCase name}} = () => {
 	const navigate = useNavigation();
 	const {colors} = useTheme();
-  const isRTL = useLayout((state) => state.RTL);
+  const isRTL = useAppSelector((state) => state.layout.RTL);
   const styles = generateStyles(isRTL, colors);
   return (
     <View>

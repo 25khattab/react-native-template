@@ -2,16 +2,18 @@ import {Button, StyleSheet} from 'react-native';
 
 import Text from '@/components/core/Text';
 import View from '@/components/core/View';
-import {useAuth} from '@/features';
+import { useAppDispatch } from '@/hooks/redux-hooks';
+import { setCredentials } from '@/features/auth';
 
 export const Login = () => {
-  const login = useAuth((s) => s.signIn);
+  const dispatch = useAppDispatch()
   return (
-    <View>
+    <View style={{flex:1}}>
       <Text>Login</Text>
       <Button
         title="login"
-        onPress={() => login({access: 'asdad', refresh: 'asdad'})}
+        onPress={() => dispatch(setCredentials({access: 'asdad', refresh: 'asdad'}))}
+      
       />
     </View>
   );

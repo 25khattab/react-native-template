@@ -5,17 +5,20 @@ import Text from '@/components/core/Text';
 import View from '@/components/core/View';
 import {ExtendedThemeType} from '@/constants/colors';
 import {SIZES} from '@/constants/spacing';
-import {useAuth, useLayout} from '@/features';
 import { useTranslation } from 'react-i18next';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux-hooks';
+import { removeCredentials } from '@/features/auth';
+import { setLang, setTheme } from '@/features/layout';
 
 export const Home = () => {
   const {navigate} = useNavigation();
   const {colors} = useTheme();
-  const isRTL = useLayout((s) => s.RTL);
+  const isRTL = useAppSelector((s) => s.layout.RTL);
+  const dispatch = useAppDispatch()
   const styles = generateStyles(isRTL, colors);
-  const signOut = useAuth(s=>s.signOut)
-  const layout  = useLayout()
   const scheme = useColorScheme()
+  const lang = useAppSelector((s)=>s.layout.lang)
+  const theme = useAppSelector((s)=>s.layout.theme)
   const {t}=useTranslation()
   return (
     <View style={styles.container}>
@@ -26,15 +29,15 @@ export const Home = () => {
       />
        <Button
         title="sign out"
-        onPress={() => signOut()}
+        onPress={() => dispatch(removeCredentials())}
       />
        <Button
         title="change language"
-        onPress={() => layout.setLanguage(layout.lang==="ar"?"en":"ar")}
+        onPress={() => dispatch(setLang(lang==="ar"?"en":"ar"))}
       />
        <Button
         title="change theme"
-        onPress={() => layout.setTheme(layout.theme === 'system' && scheme === 'dark' ||layout.theme === 'dark' ?"light":"dark")}
+        onPress={() => dispatch(setTheme(theme === 'system' && scheme === 'dark' ||theme === 'dark' ?"light":"dark"))}
       />
     </View>
   );
