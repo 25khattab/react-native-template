@@ -69,6 +69,12 @@ export default function (
           pattern: "// don't remove for generator",
           template: '\t{{pascalCase name}}: undefined;',
         });
+        actions.push({
+          type: 'append',
+          path: 'src/navigation/auth-navigator.tsx',
+          pattern: "// don't remove for generator (route)",
+          template: "\t{name: '{{pascalCase name}}', component: {{pascalCase name}}, title: '{{screenTitleEn}}' },",
+        });
       } else if (data.screenType === screenTypes.app) {
         actions.push({
           type: 'add',
@@ -91,7 +97,7 @@ export default function (
           path: 'src/navigation/app-navigator.tsx',
           pattern: "// don't remove for generator (route)",
           template:
-            "\t{name: '{{pascalCase name}}', component: {{pascalCase name}}, label: '{{screenTitleEn}}' },",
+            "\t{name: '{{pascalCase name}}', component: {{pascalCase name}}, title: '{{screenTitleEn}}' },",
           data: {hello: 'omar'},
         });
       }
