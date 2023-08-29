@@ -8,7 +8,7 @@
 
 ## About <a name = "about"></a>
 
-Its a template for react-native projects using expo SDK 49 and expo routers
+Its a template for react-native projects using expo SDK 49 and react navigation
 
 ### Features
 
@@ -16,7 +16,9 @@ Its a template for react-native projects using expo SDK 49 and expo routers
 
 - RTL & Dark mode Support from withing View and Text [check them out](./src/components/overriden-components/)
 
-- Redux Toolkit setup and initialization
+- zustand
+
+- react query (soon)
 
 - Eslint and prettier formatting same as shopify
 
@@ -44,7 +46,7 @@ What things you need to install the software and how to install them.
 this is my current setup just incase it didn't work on your local machine.
 
 ```
-npm >= 9.5.1
+pnpm >= 8
 node >= v18.16.0 always prefer LTS
 ```
 
@@ -62,7 +64,6 @@ npm run start
 
 ### This is just preference use what you are comfortable with
 
-- #### Since this template is built with Redux Toolkit its very good to have [RTK Query](https://redux-toolkit.js.org/rtk-query/overview) for fetching your data
 
 - #### [react-hook-form](https://github.com/react-hook-form/react-hook-form)
 
