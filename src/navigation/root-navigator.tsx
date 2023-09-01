@@ -3,12 +3,14 @@ import {useCallback, useEffect} from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useColorScheme} from 'react-native';
+import {StatusBar} from 'expo-status-bar';
 
 import {AuthNavigator} from './auth-navigator';
 
 import {useAuth, useLayout} from '@/features';
 import {MyDarkTheme, MyLightTheme} from '@/constants/colors';
 import {AppNavigator} from './app-navigator';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const Stack = createNativeStackNavigator();
 
@@ -56,7 +58,26 @@ export const RootNavigator = () => {
   }
   return (
     <NavigationContainer theme={darkTheme ? MyDarkTheme : MyLightTheme}>
-      <Root />
+      {/* <SafeAreaView
+      
+        style={{
+          flex: 0,
+          backgroundColor: darkTheme
+            ? MyDarkTheme.colors.background
+            : MyLightTheme.colors.background,
+        }}
+      /> */}
+      <SafeAreaView
+        style={{
+          flex: 1,
+          backgroundColor: darkTheme
+            ? MyDarkTheme.colors.background
+            : MyLightTheme.colors.background,
+        }}
+      >
+        <Root />
+      </SafeAreaView>
+      <StatusBar style={darkTheme ? 'light' : 'dark'} />
     </NavigationContainer>
   );
 };

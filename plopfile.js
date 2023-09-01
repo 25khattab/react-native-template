@@ -23,6 +23,11 @@ export default function (
         path: 'src/components/{{camelCase name}}/index.tsx',
         templateFile: 'templates/Component.tsx.hbs',
       },
+      {
+        type: 'append',
+        path: 'src/components/index.ts',
+        template: "export * from './{{camelCase name}}';",
+      },
     ],
   });
   plop.setGenerator('screen', {
@@ -66,14 +71,21 @@ export default function (
         actions.push({
           type: 'append',
           path: 'src/navigation/auth-navigator.tsx',
-          pattern: "// don't remove for generator",
+          pattern: "// don't remove for generator (import)",
+          template: '\t{{pascalCase name}},',
+        });
+        actions.push({
+          type: 'append',
+          path: 'src/navigation/auth-navigator.tsx',
+          pattern: "// don't remove for generator (param)",
           template: '\t{{pascalCase name}}: undefined;',
         });
         actions.push({
           type: 'append',
           path: 'src/navigation/auth-navigator.tsx',
           pattern: "// don't remove for generator (route)",
-          template: "\t{name: '{{pascalCase name}}', component: {{pascalCase name}}, title: '{{screenTitleEn}}' },",
+          template:
+            "\t{name: '{{pascalCase name}}', component: {{pascalCase name}}, title: '{{screenTitleEn}}' },",
         });
       } else if (data.screenType === screenTypes.app) {
         actions.push({
@@ -89,7 +101,13 @@ export default function (
         actions.push({
           type: 'append',
           path: 'src/navigation/app-navigator.tsx',
-          pattern: "// don't remove for generator (list)",
+          pattern: "// don't remove for generator (import)",
+          template: '\t{{pascalCase name}},',
+        });
+        actions.push({
+          type: 'append',
+          path: 'src/navigation/app-navigator.tsx',
+          pattern: "// don't remove for generator (param)",
           template: '\t{{pascalCase name}}: undefined;',
         });
         actions.push({

@@ -2,10 +2,12 @@ import 'react-native-gesture-handler';
 import 'i18n';
 import {StyleSheet} from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
-import {SafeAreaView} from 'react-native-safe-area-context';
 
 import {RootNavigator} from '@/navigation';
-import {hydrateAuth, hydrateLayout} from '@/features';
+import {hydrateAuth, hydrateLayout, useLayout} from '@/features';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+
 
 hydrateAuth();
 hydrateLayout();
@@ -13,16 +15,19 @@ SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   return (
-  
-      <SafeAreaView style={styles.container}>
-        <RootNavigator />
-      </SafeAreaView>
-    
+    <GestureHandlerRootView style={styles.container}>
+      <BottomSheetModalProvider>
+     
+          <RootNavigator />
+        
+      </BottomSheetModalProvider>
+    </GestureHandlerRootView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    
   },
 });

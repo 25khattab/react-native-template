@@ -1,12 +1,15 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {TabNavigator} from './tab-navigator';
-import {Profile} from '@/screens/app-screens';
+import {
+  // don't remove for generator (import)
+  Profile,
+} from '@/screens/app-screens';
 import {useTranslation} from 'react-i18next';
 import {IStackRouteType} from './types';
 
 export type AppStackParamList = {
-  // don't remove for generator (list)
+  // don't remove for generator (param)
   Tab: undefined;
   Profile: undefined;
 };
