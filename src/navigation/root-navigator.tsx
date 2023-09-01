@@ -8,22 +8,25 @@ import {AuthNavigator} from './auth-navigator';
 
 import {useAuth, useLayout} from '@/features';
 import {MyDarkTheme, MyLightTheme} from '@/constants/colors';
-import { AppNavigator } from './app-navigator';
+import {AppNavigator} from './app-navigator';
 
 const Stack = createNativeStackNavigator();
 
 export const Root = () => {
   const status = useAuth.use.status();
   const hideSplash = useCallback(async () => {
+    console.log(status);
+    // setTimeout(async () => await SplashScreen.hideAsync(),1000)
     await SplashScreen.hideAsync();
   }, []);
   useEffect(() => {
-    console.log(status);
     if (status !== 'idle') {
       hideSplash();
     }
   }, [hideSplash, status]);
-
+  if (status === 'idle') {
+    return null;
+  }
   return (
     <Stack.Navigator
       screenOptions={{
@@ -48,6 +51,9 @@ export const RootNavigator = () => {
   const darkTheme = Boolean(
     (theme === 'system' && scheme === 'dark') || theme === 'dark',
   );
+  if (theme === null) {
+    return null;
+  }
   return (
     <NavigationContainer theme={darkTheme ? MyDarkTheme : MyLightTheme}>
       <Root />
