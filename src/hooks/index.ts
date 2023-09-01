@@ -1,1 +1,1 @@
-export * from './keyborad'
+export * from './keyborad';

@@ -1,14 +1,13 @@
-import { styled, useColorScheme } from 'nativewind';
+import {styled, useColorScheme} from 'nativewind';
 import * as React from 'react';
-import type { TextInput, TextInputProps } from 'react-native';
-import { StyleSheet } from 'react-native';
-import { TextInput as NTextInput } from 'react-native';
-
-import { isRTL } from '@/core';
+import type {TextInput, TextInputProps} from 'react-native';
+import {StyleSheet, TextInput as NTextInput} from 'react-native';
 
 import colors from '../../theme/colors';
-import { Text } from '../text';
-import { View } from '../view';
+import {Text} from '../text';
+import {View} from '../view';
+
+import {isRTL} from '@/core';
 
 const STextInput = styled(NTextInput);
 
@@ -19,8 +18,8 @@ export interface NInputProps extends TextInputProps {
 }
 
 export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
-  const { label, error, ...inputProps } = props;
-  const { colorScheme } = useColorScheme();
+  const {label, error, ...inputProps} = props;
+  const {colorScheme} = useColorScheme();
   const isDark = colorScheme === 'dark';
   const [isFocussed, setIsFocussed] = React.useState(false);
   const onBlur = React.useCallback(() => setIsFocussed(false), []);
@@ -66,9 +65,7 @@ export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
         onBlur={onBlur}
         onFocus={onFocus}
         {...inputProps}
-        style={StyleSheet.flatten([
-          { writingDirection: isRTL ? 'rtl' : 'ltr' },
-        ])}
+        style={StyleSheet.flatten([{writingDirection: isRTL ? 'rtl' : 'ltr'}])}
       />
       {error && <Text variant="error">{error}</Text>}
     </View>

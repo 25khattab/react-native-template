@@ -1,12 +1,13 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {useTranslation} from 'react-i18next';
 
 import {TabNavigator} from './tab-navigator';
+import {IStackRouteType} from './types';
+
 import {
   // don't remove for generator (import)
   Profile,
 } from '@/screens/app-screens';
-import {useTranslation} from 'react-i18next';
-import {IStackRouteType} from './types';
 
 export type AppStackParamList = {
   // don't remove for generator (param)
@@ -16,7 +17,7 @@ export type AppStackParamList = {
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
 
-const routes: Array<IStackRouteType<AppStackParamList> & {title: string}> = [
+const routes: (IStackRouteType<AppStackParamList> & {title: string})[] = [
   // don't remove for generator (route)
   {
     name: 'Tab',

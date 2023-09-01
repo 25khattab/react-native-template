@@ -1,5 +1,5 @@
-import { useFocusEffect } from '@react-navigation/native';
-import { AvoidSoftInput } from 'react-native-avoid-softinput';
+import {useFocusEffect} from '@react-navigation/native';
+import {AvoidSoftInput} from 'react-native-avoid-softinput';
 
 /**
  *  This hook should be used in every screen that has a form input field to avoid the keyboard
@@ -8,7 +8,7 @@ import { AvoidSoftInput } from 'react-native-avoid-softinput';
 
 export const useSoftKeyboardEffect = () => {
   useFocusEffect(() => {
-    console.log("inside useSoftKeyboardEffect")
+    console.log('inside useSoftKeyboardEffect');
     AvoidSoftInput.setShouldMimicIOSBehavior(true);
     AvoidSoftInput.setEnabled(true);
     // AvoidSoftInput.setAvoidOffset(30);

@@ -4,13 +4,13 @@ import * as SplashScreen from 'expo-splash-screen';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useColorScheme} from 'react-native';
 import {StatusBar} from 'expo-status-bar';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 import {AuthNavigator} from './auth-navigator';
+import {AppNavigator} from './app-navigator';
 
 import {useAuth, useLayout} from '@/features';
 import {MyDarkTheme, MyLightTheme} from '@/constants/colors';
-import {AppNavigator} from './app-navigator';
-import {SafeAreaView} from 'react-native-safe-area-context';
 
 const Stack = createNativeStackNavigator();
 

@@ -1,16 +1,18 @@
 import * as React from 'react';
+import {useTheme} from '@react-navigation/native';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 
 import {useModalRef} from '../modal';
+import View from '../core/View';
+import Text from '../core/Text';
+
 import {Arrow} from './icons';
 import type {Option} from './options';
 import {Options} from './options';
-import {useTheme} from '@react-navigation/native';
-import View from '../core/View';
-import {StyleSheet, TouchableOpacity} from 'react-native';
+
 import {ExtendedThemeType} from '@/constants/colors';
 import {SIZES} from '@/constants/spacing';
 import {useLayout} from '@/features';
-import Text from '../core/Text';
 
 export interface SelectProps {
   value?: string | number;
@@ -54,14 +56,14 @@ export const Select = (props: SelectProps) => {
 
   const textValue =
     value !== undefined
-      ? options?.filter((t) => t.value === value)?.[0]?.label ?? placeholder
+      ? options.filter((t) => t.value === value)[0]?.label ?? placeholder
       : placeholder;
 
   return (
     <>
       <View style={styles.container}>
         <TouchableOpacity
-          //className={`flex-row items-center justify-center border-[1px] py-3 px-2  ${borderColor} rounded-md ${bgColor} text-[16px]`}
+          // className={`flex-row items-center justify-center border-[1px] py-3 px-2  ${borderColor} rounded-md ${bgColor} text-[16px]`}
           style={styles.touchableContainer}
           disabled={disabled}
           onPress={open}

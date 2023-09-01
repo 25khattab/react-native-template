@@ -1,12 +1,12 @@
-import type { BottomSheetModalProps } from '@gorhom/bottom-sheet';
-import { BottomSheetModal } from '@gorhom/bottom-sheet';
+import type {BottomSheetModalProps} from '@gorhom/bottom-sheet';
+import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import * as React from 'react';
 
-
-import { renderBackdrop } from './modal-backdrop';
-import { ModalHeader } from './modal-header';
-import type { ModalProps, ModalRef } from './types';
 import View from '../core/View';
+
+import {renderBackdrop} from './modal-backdrop';
+import {ModalHeader} from './modal-header';
+import type {ModalProps, ModalRef} from './types';
 
 export const useModalRef = () => {
   const ref = React.useRef<BottomSheetModal>(null);
@@ -21,11 +21,11 @@ export const Modal = React.forwardRef(
       detached = false,
       ...props
     }: ModalProps,
-    ref: ModalRef
+    ref: ModalRef,
   ) => {
     const detachedProps = React.useMemo(
       () => getDetachedProps(detached),
-      [detached]
+      [detached],
     );
     const bottomSheetRef = useModalRef();
     const snapPoints = React.useMemo(() => _snapPoints, [_snapPoints]);
@@ -36,19 +36,20 @@ export const Modal = React.forwardRef(
 
     React.useImperativeHandle(
       ref,
-      () => (bottomSheetRef.current as BottomSheetModal) || null
+      () => (bottomSheetRef.current as BottomSheetModal) || null,
     );
 
     const renderHandleComponent = React.useCallback(
       () => (
         <>
-          <View style ={{alignSelf:"center"}}
-          // className="mt-2 h-1 w-12 self-center rounded-lg bg-gray-400 dark:bg-gray-700"
-           />
+          <View
+            style={{alignSelf: 'center'}}
+            // className="mt-2 h-1 w-12 self-center rounded-lg bg-gray-400 dark:bg-gray-700"
+          />
           <ModalHeader title={title} dismiss={dismiss} />
         </>
       ),
-      [title, dismiss]
+      [title, dismiss],
     );
 
     return (
@@ -62,7 +63,7 @@ export const Modal = React.forwardRef(
         handleComponent={renderHandleComponent}
       />
     );
-  }
+  },
 );
 
 const getDetachedProps = (detached: boolean) => {
@@ -70,7 +71,7 @@ const getDetachedProps = (detached: boolean) => {
     return {
       detached: true,
       bottomInset: 46,
-      style: { marginHorizontal: 16, overflow: 'hidden' },
+      style: {marginHorizontal: 16, overflow: 'hidden'},
     } as Partial<BottomSheetModalProps>;
   }
   return {} as Partial<BottomSheetModalProps>;

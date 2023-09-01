@@ -10,7 +10,7 @@ export type ModalProps = BottomSheetModalProps & {
 // can't accept children as function because we can't pass ref to function component
 export type DynamicModalProps = Omit<ModalProps, 'children' | 'snapPoints'> & {
   children: React.ReactNode;
-  snapPoints?: Array<number | string>;
+  snapPoints?: (number | string)[];
 };
 
 export type ModalRef = React.ForwardedRef<BottomSheetModal>;

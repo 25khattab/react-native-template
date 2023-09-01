@@ -1,17 +1,19 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {useTranslation} from 'react-i18next';
+
+import {IStackRouteType} from './types';
+
 import {
   // don't remove for generator (import)
   Login,
 } from '@/screens/auth-screens';
-import {useTranslation} from 'react-i18next';
-import {IStackRouteType} from './types';
 
 export type AuthStackParamList = {
   // don't remove for generator (param)
   Login: undefined;
 };
 const Stack = createNativeStackNavigator<AuthStackParamList>();
-const routes: Array<IStackRouteType<AuthStackParamList> & {title: string}> = [
+const routes: (IStackRouteType<AuthStackParamList> & {title: string})[] = [
   // don't remove for generator (route)
   {name: 'Login', component: Login, title: 'Login'},
 ];

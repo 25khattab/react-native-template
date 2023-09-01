@@ -2,11 +2,13 @@ import type {BottomSheetModal} from '@gorhom/bottom-sheet';
 import {BottomSheetFlatList} from '@gorhom/bottom-sheet';
 import * as React from 'react';
 import {Pressable, StyleSheet, type PressableProps} from 'react-native';
+import {useTheme} from '@react-navigation/native';
 
 import {Modal} from '../modal';
-import {Check} from './icons';
-import {useTheme} from '@react-navigation/native';
 import Text from '../core/Text';
+
+import {Check} from './icons';
+
 import {useLayout} from '@/features';
 import {SIZES} from '@/constants/spacing';
 

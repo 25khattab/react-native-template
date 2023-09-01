@@ -5,11 +5,14 @@ import type {
   RouteConfig,
   StackNavigationState,
 } from '@react-navigation/native';
+import {
+  NativeStackNavigationOptions,
+  NativeStackNavigationEventMap,
+} from '@react-navigation/native-stack';
 
 import type {AuthStackParamList} from './auth-navigator';
 import {AppTabParamList} from './tab-navigator';
-import { AppStackParamList } from './app-navigator';
-import { NativeStackNavigationOptions, NativeStackNavigationEventMap } from '@react-navigation/native-stack';
+import {AppStackParamList} from './app-navigator';
 
 // add every new Param list
 export type RootStackParamList = AppTabParamList & AppStackParamList; //  & FooStackParamList & BarStackParamList
@@ -30,11 +33,10 @@ export type RouteProp<T extends keyof RootStackParamList> = NRouteProp<
   T
 >;
 
-export type IStackRouteType<ParamList extends ParamListBase> = 
-  RouteConfig<
+export type IStackRouteType<ParamList extends ParamListBase> = RouteConfig<
   ParamList,
-    keyof ParamList ,
-    StackNavigationState<ParamList>,
-    NativeStackNavigationOptions,
-    NativeStackNavigationEventMap
-  >
+  keyof ParamList,
+  StackNavigationState<ParamList>,
+  NativeStackNavigationOptions,
+  NativeStackNavigationEventMap
+>;

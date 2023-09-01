@@ -1,12 +1,14 @@
 import * as React from 'react';
+import {Pressable, StyleSheet} from 'react-native';
+import {useTheme} from '@react-navigation/native';
+
+import View from '../core/View';
+import Text from '../core/Text';
 
 import {XClose} from './x-close';
-import View from '../core/View';
+
 import {useLayout} from '@/features';
-import {Pressable, StyleSheet} from 'react-native';
 import {SIZES} from '@/constants/spacing';
-import Text from '../core/Text';
-import { useTheme } from '@react-navigation/native';
 
 type ModalHeaderProps = {
   title?: string;
@@ -39,7 +41,7 @@ export const ModalHeader = React.memo(({title, dismiss}: ModalHeaderProps) => {
 });
 
 const CloseButton = ({close}: {close: () => void}) => {
-  const {colors}=useTheme()
+  const {colors} = useTheme();
   return (
     <Pressable
       onPress={close}

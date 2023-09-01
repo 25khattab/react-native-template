@@ -1,17 +1,17 @@
 import {useNavigation, useTheme} from '@react-navigation/native';
 import {Button, StyleSheet, useColorScheme} from 'react-native';
+import {useTranslation} from 'react-i18next';
 
 import Text from '@/components/core/Text';
 import View from '@/components/core/View';
 import {ExtendedThemeType} from '@/constants/colors';
 import {SIZES} from '@/constants/spacing';
 import {useAuth, useLayout} from '@/features';
-import {useTranslation} from 'react-i18next';
 
 export const Home = () => {
   const {navigate} = useNavigation();
   const {colors} = useTheme();
-  const isRTL = useLayout((s) => s.RTL);
+  const isRTL = useLayout((state) => state.RTL);
   const styles = generateStyles(isRTL, colors);
   const signOut = useAuth((s) => s.signOut);
   const layout = useLayout();

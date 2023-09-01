@@ -5,17 +5,17 @@ import type {
   Path,
   RegisterOptions,
 } from 'react-hook-form';
-import { useController } from 'react-hook-form';
+import {useController} from 'react-hook-form';
 
-import type { NInputProps } from './input';
-import { Input } from './input';
+import type {NInputProps} from './input';
+import {Input} from './input';
 
 type TRule = Omit<
   RegisterOptions,
   'valueAsNumber' | 'valueAsDate' | 'setValueAs'
 >;
 
-export type RuleType<T> = { [name in keyof T]: TRule };
+export type RuleType<T> = {[name in keyof T]: TRule};
 export type InputControllerType<T extends FieldValues> = {
   name: Path<T>;
   control: Control<T>;
@@ -28,11 +28,11 @@ interface ControlledInputProps<T extends FieldValues>
 
 // only used with react-hook-form
 export function ControlledInput<T extends FieldValues>(
-  props: ControlledInputProps<T>
+  props: ControlledInputProps<T>,
 ) {
-  const { name, control, rules, ...inputProps } = props;
+  const {name, control, rules, ...inputProps} = props;
 
-  const { field, fieldState } = useController({ control, name, rules });
+  const {field, fieldState} = useController({control, name, rules});
   return (
     <Input
       ref={field.ref}

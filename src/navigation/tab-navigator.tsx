@@ -4,9 +4,9 @@ import {
 } from '@react-navigation/bottom-tabs';
 import {useTheme, type RouteProp} from '@react-navigation/native';
 import type {ComponentType} from 'react';
+import {useTranslation} from 'react-i18next';
 
 import {Settings, Home} from '@/screens/tab-screens';
-import { useTranslation } from 'react-i18next';
 
 export type AppTabParamList = {
   // don't remove leave for generator (list)
@@ -19,8 +19,6 @@ interface TabType {
   component: ComponentType<any>;
   label: string;
 }
-
-
 
 const Tab = createBottomTabNavigator<AppTabParamList>();
 
@@ -63,7 +61,7 @@ const tabs: TabType[] = [
 // };
 
 export const TabNavigator = () => {
-  const {t}=useTranslation()
+  const {t} = useTranslation();
   const {colors} = useTheme();
   return (
     <Tab.Navigator

@@ -16,10 +16,7 @@ export const Profile = () => {
   return (
     <View style={styles.container}>
       <Text>Profile</Text>
-      <Button
-        title="navigate to home"
-        onPress={() => navigate('Home')}
-      />
+      <Button title="navigate to home" onPress={() => navigate('Home')} />
     </View>
   );
 };
