@@ -9,6 +9,7 @@
 ## About <a name = "about"></a>
 
 Its a template for react-native projects using expo SDK 49 and react navigation
+you need to make dev build to run the application
 
 ### Features
 
@@ -16,7 +17,11 @@ Its a template for react-native projects using expo SDK 49 and react navigation
 
 - RTL & Dark mode Support from withing View and Text [check them out](./src/components/overriden-components/)
 
-- zustand
+- zustand 
+
+- react bottom sheet
+
+-
 
 - react query (soon)
 
@@ -69,12 +74,7 @@ npm run start
 
 - #### [Zod](https://github.com/colinhacks/zod) for type validation and it's really nice with [react-hook-form](https://github.com/react-hook-form/react-hook-form)
 
-- #### [react-native-bottom-sheet](https://github.com/gorhom/react-native-bottom-sheet) Its very good library for bottom sheet with easy usage and can build complex stuff too.
 
 - #### [react-native-snap-carousel](https://github.com/meliorence/react-native-snap-carousel)
-
-- #### [react-native-modal](https://github.com/react-native-modal/react-native-modal) tihs will also come in handy if you want to understand how it works [modal](https://reactnative.dev/docs/modal)
-
-- #### For picker I suggest [react-native-element-dropdown](https://github.com/hoaphantn7604/react-native-element-dropdown) its very nice and easy to use and has only 1 Dependency, Also for Secioned multi select I suggest [react-native-sectioned-multi-select](https://github.com/renrizzolo/react-native-sectioned-multi-select)
 
 - #### Also check Expo they have very good and maintained packages
