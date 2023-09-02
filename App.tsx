@@ -1,12 +1,12 @@
-import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import 'i18n';
-import {StyleSheet} from 'react-native';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import * as SplashScreen from 'expo-splash-screen';
-import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import * as Updates from 'expo-updates';
+import 'i18n';
+import { StyleSheet } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import {RootNavigator} from '@/navigation';
-import {hydrateAuth, hydrateLayout, useLayout} from '@/features';
+import { hydrateAuth, hydrateLayout } from '@/features';
+import { RootNavigator } from '@/navigation';
 import { useEffect } from 'react';
 
 hydrateAuth();
