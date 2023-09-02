@@ -19,7 +19,7 @@ export const Home = () => {
   const {t} = useTranslation();
   return (
     <View style={styles.container}>
-      <Text>{t('hello')}</Text>
+      <Text>{t('hello')} updated</Text>
       <Button
         title="navigate to settings"
         onPress={() => navigate('Settings')}

@@ -3,10 +3,7 @@ const screenTypes = {
   app: 'App Screen',
   appTab: 'App Bottom Tab Screen',
 };
-export default function (
-  /** @type {import('plop').NodePlopAPI} */
-  plop,
-) {
+module.exports =  function (/** @type {import('plop').NodePlopAPI} */ plop) {
   plop.load('plop-pack-json-modify');
   plop.setGenerator('component', {
     description: 'Create a component',

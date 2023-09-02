@@ -17,8 +17,6 @@ const Stack = createNativeStackNavigator();
 export const Root = () => {
   const status = useAuth.use.status();
   const hideSplash = useCallback(async () => {
-    console.log(status);
-    // setTimeout(async () => await SplashScreen.hideAsync(),1000)
     await SplashScreen.hideAsync();
   }, []);
   useEffect(() => {
@@ -58,15 +56,6 @@ export const RootNavigator = () => {
   }
   return (
     <NavigationContainer theme={darkTheme ? MyDarkTheme : MyLightTheme}>
-      {/* <SafeAreaView
-      
-        style={{
-          flex: 0,
-          backgroundColor: darkTheme
-            ? MyDarkTheme.colors.background
-            : MyLightTheme.colors.background,
-        }}
-      /> */}
       <SafeAreaView
         style={{
           flex: 1,
