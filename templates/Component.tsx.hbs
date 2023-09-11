@@ -1,14 +1,14 @@
-import {useTheme} from '@react-navigation/native';
-import {ExtendedThemeType} from '@/constants/colors';
+import {StyleSheet} from 'react-native';
 
-import Text from '@/components/core/Text';
-import View from '@/components/core/View';
+import {Text, View} from '../core';
 import {useLayout} from '@/features';
+import {useSelectedTheme} from '@/hooks';
+import {ExtendedThemeType} from '@/constants/colors';
 
 interface {{pascalCase name}}Props {}
 
 export const {{pascalCase name}} = ({}: {{pascalCase name}}Props) => {
-  const {colors} = useTheme();
+  const {colors} = useSelectedTheme();
   const isRTL = useLayout((state) => state.RTL);
   const styles = generateStyles(isRTL, colors);
   return (
@@ -17,7 +17,6 @@ export const {{pascalCase name}} = ({}: {{pascalCase name}}Props) => {
     </View>
   );
 };
-
 
 const generateStyles = (isRTL: boolean, colors: ExtendedThemeType['colors']) =>
   StyleSheet.create({

@@ -2,11 +2,13 @@ import type {BottomSheetModalProps} from '@gorhom/bottom-sheet';
 import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import * as React from 'react';
 
-import View from '../core/View';
+import {View} from '../core';
 
+import {useSelectedTheme} from '@/hooks/use-selected-theme';
 import {renderBackdrop} from './modal-backdrop';
 import {ModalHeader} from './modal-header';
 import type {ModalProps, ModalRef} from './types';
+import {SIZES} from '@/constants/spacing';
 
 export const useModalRef = () => {
   const ref = React.useRef<BottomSheetModal>(null);
@@ -29,7 +31,7 @@ export const Modal = React.forwardRef(
     );
     const bottomSheetRef = useModalRef();
     const snapPoints = React.useMemo(() => _snapPoints, [_snapPoints]);
-
+    const {colors} = useSelectedTheme();
     const dismiss = React.useCallback(() => {
       bottomSheetRef.current?.dismiss();
     }, [bottomSheetRef]);
@@ -43,7 +45,14 @@ export const Modal = React.forwardRef(
       () => (
         <>
           <View
-            style={{alignSelf: 'center'}}
+            style={{
+              alignSelf: 'center',
+              height: 2,
+              width: "30%",
+              marginTop: SIZES.xSmall,
+              backgroundColor: colors.backgroundTertiary,
+              borderRadius:SIZES.xxLarge
+            }}
             // className="mt-2 h-1 w-12 self-center rounded-lg bg-gray-400 dark:bg-gray-700"
           />
           <ModalHeader title={title} dismiss={dismiss} />

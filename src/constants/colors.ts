@@ -1,20 +1,19 @@
-import {DefaultTheme, DarkTheme, ExtendedTheme} from '@react-navigation/native';
-
 /**
  * this will hold every color in the application
  */
 const COLORS = {
   primary: '#1C1E3C',
   secondary: '#ED6A46',
-  lightGray: '#F5F3F3',
-  white: '#fff',
-  light1: '#fafafa',
-  light2: '#F3F4F5',
-  light3: '#eeeeee',
-  dark1: '#121418',
-  dark2: '#1B1F24',
-  dark3: '#22272E',
   gray: '#757575',
+  black: '#000000',
+  white: '#FFFFFF',
+  lightGray1: '#F5F5F5',
+  lightGray2: '#F0EFEE',
+  lightGray3: '#D4D4D4',
+  lightGray4: '#A3A3A3',
+  darkGray1: '#2E2E2E',
+  darkGray2: '#1E1E1E',
+  darkGray3: '#121212',
 };
 const CommonColors = {
   alert: '#DC3545',
@@ -23,38 +22,46 @@ const CommonColors = {
 };
 
 const ColorsLight = {
+  ...CommonColors,
+  gray: '#757575',
+  black: '#000000',
+  white: '#FFFFFF',
+  lightGray1: '#F5F5F5',
+  lightGray2: '#F0EFEE',
+  lightGray3: '#D4D4D4',
+  lightGray4: '#A3A3A3',
+  darkGray1: '#2E2E2E',
+  darkGray2: '#1E1E1E',
+  darkGray3: '#121212',
   primary: COLORS.primary,
-  background: COLORS.lightGray,
+  secondary: COLORS.secondary,
+  background: COLORS.lightGray1,
   backgroundSecondary: COLORS.primary,
   backgroundTertiary: COLORS.secondary,
-  primaryText: COLORS.dark2,
-  lightGray: COLORS.lightGray,
-  text: COLORS.dark2,
-  white: COLORS.white,
-  gray: COLORS.gray,
+  text: COLORS.darkGray2,
+  lighterText: COLORS.darkGray1,
+  border: COLORS.darkGray3,
+  card:COLORS.black,
+  notification:CommonColors.alert
 };
 
 const ColorsDark = {
   ...ColorsLight,
-  background: COLORS.dark2,
-  primaryText: COLORS.light1,
-  text: COLORS.white,
+  background: COLORS.darkGray3,
+  text: COLORS.lightGray2,
+  lighterText: COLORS.lightGray4,
+  border: COLORS.lightGray2,
 };
 
-export const MyLightTheme: ExtendedTheme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    ...CommonColors,
-    ...ColorsLight,
-  },
+export const MyLightTheme:ExtendedThemeType = {
+  dark: false,
+  colors: { ...ColorsLight},
 };
 
-export const MyDarkTheme: ExtendedTheme = {
-  ...DarkTheme,
+export const MyDarkTheme:ExtendedThemeType = {
+  dark: true,
   colors: {
-    ...DarkTheme.colors,
-    ...CommonColors,
+   
     ...ColorsDark,
   },
 };
@@ -65,16 +72,24 @@ export interface ExtendedThemeType {
     success: string;
     warning: string;
     background: string;
-    border: string;
-    card: string;
-    notification: string;
-    primary: string;
-    text: string;
     backgroundSecondary: string;
     backgroundTertiary: string;
-    primaryText: string;
-    lightGray: string;
-    white: string;
+    primary: string;
+    secondary: string;
+    text: string;
+    lighterText: string;
+    border: string;
     gray: string;
+    black: string;
+    white: string;
+    lightGray1: string;
+    lightGray2: string;
+    lightGray3: string;
+    lightGray4: string;
+    darkGray1: string;
+    darkGray2: string;
+    darkGray3: string;
+    card:string;
+    notification:string;
   };
 }

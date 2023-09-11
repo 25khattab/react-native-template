@@ -3,7 +3,7 @@ const screenTypes = {
   app: 'App Screen',
   appTab: 'App Bottom Tab Screen',
 };
-module.exports =  function (/** @type {import('plop').NodePlopAPI} */ plop) {
+module.exports = function (/** @type {import('plop').NodePlopAPI} */ plop) {
   plop.load('plop-pack-json-modify');
   plop.setGenerator('component', {
     description: 'Create a component',
@@ -17,13 +17,13 @@ module.exports =  function (/** @type {import('plop').NodePlopAPI} */ plop) {
     actions: [
       {
         type: 'add',
-        path: 'src/components/{{camelCase name}}/index.tsx',
+        path: 'src/components/{{dashCase name}}/index.tsx',
         templateFile: 'templates/Component.tsx.hbs',
       },
       {
         type: 'append',
         path: 'src/components/index.ts',
-        template: "export * from './{{camelCase name}}';",
+        template: "export * from './{{dashCase name}}';",
       },
     ],
   });
@@ -57,13 +57,13 @@ module.exports =  function (/** @type {import('plop').NodePlopAPI} */ plop) {
       if (data.screenType === screenTypes.auth) {
         actions.push({
           type: 'add',
-          path: 'src/screens/auth-screens/{{camelCase name}}/index.tsx',
+          path: 'src/screens/auth-screens/{{dashCase name}}/index.tsx',
           templateFile: 'templates/AuthScreen.tsx.hbs',
         });
         actions.push({
           type: 'append',
           path: 'src/screens/auth-screens/index.ts',
-          template: "export * from './{{camelCase name}}';",
+          template: "export * from './{{dashCase name}}';",
         });
         actions.push({
           type: 'append',
@@ -87,13 +87,13 @@ module.exports =  function (/** @type {import('plop').NodePlopAPI} */ plop) {
       } else if (data.screenType === screenTypes.app) {
         actions.push({
           type: 'add',
-          path: 'src/screens/app-screens/{{camelCase name}}/index.tsx',
+          path: 'src/screens/app-screens/{{dashCase name}}/index.tsx',
           templateFile: 'templates/Screen.tsx.hbs',
         });
         actions.push({
           type: 'append',
           path: 'src/screens/app-screens/index.ts',
-          template: "export * from './{{camelCase name}}';",
+          template: "export * from './{{dashCase name}}';",
         });
         actions.push({
           type: 'append',
@@ -137,4 +137,4 @@ module.exports =  function (/** @type {import('plop').NodePlopAPI} */ plop) {
       return actions;
     },
   });
-}
+};

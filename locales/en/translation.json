@@ -6,5 +6,9 @@
     "Profile": "Profile",
     "Tab": "test",
     "Login": "Login"
+  },
+  "common":{
+    "theme":"Theme"
+    
   }
 }

@@ -1,16 +1,15 @@
-import {useNavigation, useTheme} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import {StyleSheet} from 'react-native';
 
-import {ExtendedThemeType} from '@/constants/colors';
-import Text from '@/components/core/Text';
-import View from '@/components/core/View';
+import {Text, View} from '@/components';
 import {useLayout} from '@/features';
 import {SIZES} from '@/constants/spacing';
-
+import {useSelectedTheme} from '@/hooks';
+import {ExtendedThemeType} from '@/constants/colors';
 
 export const {{pascalCase name}} = () => {
 	const navigate = useNavigation();
-	const {colors} = useTheme();
+	const {colors} = useSelectedTheme();
   const isRTL = useLayout((state) => state.RTL);
   const styles = generateStyles(isRTL, colors);
   return (

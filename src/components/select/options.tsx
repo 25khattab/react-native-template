@@ -2,15 +2,15 @@ import type {BottomSheetModal} from '@gorhom/bottom-sheet';
 import {BottomSheetFlatList} from '@gorhom/bottom-sheet';
 import * as React from 'react';
 import {Pressable, StyleSheet, type PressableProps} from 'react-native';
-import {useTheme} from '@react-navigation/native';
 
 import {Modal} from '../modal';
-import Text from '../core/Text';
+import {Text} from '../core';
 
 import {Check} from './icons';
 
 import {useLayout} from '@/features';
 import {SIZES} from '@/constants/spacing';
+import {useSelectedTheme} from '@/hooks/use-selected-theme';
 
 export type Option = {label: string; value: string | number};
 
@@ -28,17 +28,14 @@ export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
   ({options, onSelect, value}, ref) => {
     const height = options.length * 70 + 100;
     const snapPoints = React.useMemo(() => [height], [height]);
-    const {colors} = useTheme();
-    const renderSelectItem = React.useCallback(
-      ({item}: {item: Option}) => (
-        <Option
-          key={`select-item-${item.value}`}
-          label={item.label}
-          selected={value === item.value}
-          onPress={() => onSelect(item)}
-        />
-      ),
-      [onSelect, value],
+    const {isDark, colors} = useSelectedTheme();
+    const renderSelectItem = ({item}: {item: Option}) => (
+      <Option
+        key={`select-item-${item.value}`}
+        label={item.label}
+        selected={value === item.value}
+        onPress={() => onSelect(item)}
+      />
     );
 
     return (
@@ -47,7 +44,7 @@ export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
         index={0}
         snapPoints={snapPoints}
         backgroundStyle={{
-          backgroundColor: colors.background,
+          backgroundColor: isDark ? colors.darkGray2 : colors.white,
         }}
       >
         <BottomSheetFlatList
@@ -70,7 +67,8 @@ const Option = React.memo(
     label: string;
   }) => {
     const isRTL = useLayout((state) => state.RTL);
-    const {colors} = useTheme();
+    
+    const {isDark, colors} = useSelectedTheme();
     const styles = StyleSheet.create({
       container: {
         flexDirection: isRTL ? 'row-reverse' : 'row',
@@ -78,8 +76,8 @@ const Option = React.memo(
         paddingVertical: SIZES.small,
         alignItems: 'center',
         borderBottomWidth: 1,
-        borderColor: colors.primaryText,
-        backgroundColor: colors.background,
+        borderColor: colors.border,
+        backgroundColor: 'transparent',
       },
       svg: {
         width: SIZES.xLarge,
@@ -95,7 +93,7 @@ const Option = React.memo(
     return (
       <Pressable style={styles.container} {...props}>
         <Text style={styles.labelText}>{label}</Text>
-        {selected && <Check fill={colors.primaryText} />}
+        {selected && <Check fill={colors.backgroundTertiary} />}
       </Pressable>
     );
   },

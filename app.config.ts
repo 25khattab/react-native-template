@@ -1,12 +1,14 @@
 import {ExpoConfig, ConfigContext} from 'expo/config';
 
-const IS_DEV = process.env.APP_VARIANT === 'development';
+import {ClientEnv, Env} from './env';
 
 export default ({config}: ConfigContext): ExpoConfig => ({
   ...config,
-  name: IS_DEV ? 'react-native-template (Dev)' : 'react-native-template',
+  name: Env.NAME,
+  description: `${Env.NAME} Mobile App`,
+  owner: Env.EXPO_ACCOUNT_OWNER,
   slug: 'react-native-template',
-  version: '1.0.0',
+  version: Env.VERSION.toString(),
   orientation: 'portrait',
   icon: './assets/icon.png',
   userInterfaceStyle: 'automatic',
@@ -18,18 +20,14 @@ export default ({config}: ConfigContext): ExpoConfig => ({
   assetBundlePatterns: ['**/*'],
   ios: {
     supportsTablet: true,
-    bundleIdentifier: IS_DEV
-      ? 'com.khattab.reactnativetemplateDev'
-      : 'com.khattab.reactnativetemplate',
+    bundleIdentifier: Env.BUNDLE_ID,
   },
   android: {
     adaptiveIcon: {
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#ffffff',
     },
-    package: IS_DEV
-      ? 'com.khattab.reactnativetemplateDev'
-      : 'com.khattab.reactnativetemplate',
+    package: Env.PACKAGE,
   },
   web: {
     favicon: './assets/favicon.png',
@@ -39,20 +37,20 @@ export default ({config}: ConfigContext): ExpoConfig => ({
     [
       'expo-updates',
       {
-        username: 'omar_khattab',
+        username: Env.EXPO_ACCOUNT_OWNER,
       },
     ],
   ],
   extra: {
+    ...ClientEnv,
     eas: {
-      projectId: '06d43376-5ae0-4c67-a069-306f7e61e3a1',
+      projectId: Env.EAS_PROJECT_ID,
     },
   },
-  owner: 'omar_khattab',
   runtimeVersion: {
     policy: 'appVersion',
   },
   updates: {
-    url: 'https://u.expo.dev/06d43376-5ae0-4c67-a069-306f7e61e3a1',
+    url: `https://u.expo.dev/${Env.EAS_PROJECT_ID}`,
   },
 });

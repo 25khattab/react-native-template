@@ -3,7 +3,8 @@
     "plugin:@shopify/typescript",
     "plugin:@shopify/typescript-type-checking",
     "plugin:@shopify/react",
-    "plugin:@shopify/prettier"
+    "plugin:@shopify/prettier",
+    "plugin:@tanstack/eslint-plugin-query/recommended"
   ],
   "parserOptions": {
     "project": "tsconfig.json"

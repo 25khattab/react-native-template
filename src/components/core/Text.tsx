@@ -1,11 +1,11 @@
 import {Text as RNText, TextProps as RNTextProps} from 'react-native';
-import {useTheme} from '@react-navigation/native';
 
 import {useLayout} from '@/features';
+import { useSelectedTheme } from '@/hooks/use-selected-theme';
 
-const Text = (props: RNTextProps) => {
+export const Text = (props: RNTextProps) => {
   const isRTL = useLayout((state) => state.RTL);
-  const {colors} = useTheme();
+  const {colors} = useSelectedTheme();
 
   return (
     <RNText
@@ -21,4 +21,3 @@ const Text = (props: RNTextProps) => {
     />
   );
 };
-export default Text;

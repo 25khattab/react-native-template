@@ -11,6 +11,7 @@ import {AppNavigator} from './app-navigator';
 
 import {useAuth, useLayout} from '@/features';
 import {MyDarkTheme, MyLightTheme} from '@/constants/colors';
+import {useSelectedTheme} from '@/hooks';
 
 const Stack = createNativeStackNavigator();
 
@@ -47,6 +48,7 @@ export const Root = () => {
 };
 export const RootNavigator = () => {
   const theme = useLayout((state) => state.theme);
+  const {colors} = useSelectedTheme();
   const scheme = useColorScheme();
   const darkTheme = Boolean(
     (theme === 'system' && scheme === 'dark') || theme === 'dark',
@@ -55,13 +57,11 @@ export const RootNavigator = () => {
     return null;
   }
   return (
-    <NavigationContainer theme={darkTheme ? MyDarkTheme : MyLightTheme}>
+    <NavigationContainer>
       <SafeAreaView
         style={{
           flex: 1,
-          backgroundColor: darkTheme
-            ? MyDarkTheme.colors.background
-            : MyLightTheme.colors.background,
+          backgroundColor: colors.background,
         }}
       >
         <Root />

@@ -8,21 +8,21 @@ dependencies:
   '@gorhom/bottom-sheet':
     specifier: ^4.4.7
     version: 4.4.7(@types/react@18.2.21)(react-native-gesture-handler@2.12.1)(react-native-reanimated@3.3.0)(react-native@0.72.4)(react@18.2.0)
+  '@hookform/resolvers':
+    specifier: ^3.3.1
+    version: 3.3.1(react-hook-form@7.46.1)
   '@react-navigation/bottom-tabs':
     specifier: ^6.5.8
     version: 6.5.8(@react-navigation/native@6.1.7)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.4)(react@18.2.0)
-  '@react-navigation/elements':
-    specifier: ^1.3.18
-    version: 1.3.18(@react-navigation/native@6.1.7)(react-native-safe-area-context@4.6.3)(react-native@0.72.4)(react@18.2.0)
   '@react-navigation/native':
     specifier: ^6.1.7
     version: 6.1.7(react-native@0.72.4)(react@18.2.0)
   '@react-navigation/native-stack':
     specifier: ^6.9.13
     version: 6.9.13(@react-navigation/native@6.1.7)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.4)(react@18.2.0)
-  '@react-navigation/stack':
-    specifier: ^6.3.17
-    version: 6.3.17(@react-navigation/native@6.1.7)(react-native-gesture-handler@2.12.1)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.4)(react@18.2.0)
+  '@tanstack/react-query':
+    specifier: ^4.35.0
+    version: 4.35.0(react-native@0.72.4)(react@18.2.0)
   expo:
     specifier: ~49.0.8
     version: 49.0.8(@babel/core@7.22.11)
@@ -50,6 +50,9 @@ dependencies:
   react:
     specifier: 18.2.0
     version: 18.2.0
+  react-hook-form:
+    specifier: ^7.46.1
+    version: 7.46.1(react@18.2.0)
   react-i18next:
     specifier: ^13.2.0
     version: 13.2.1(i18next@23.4.6)(react-native@0.72.4)(react@18.2.0)
@@ -74,6 +77,9 @@ dependencies:
   react-native-svg:
     specifier: 13.9.0
     version: 13.9.0(react-native@0.72.4)(react@18.2.0)
+  zod:
+    specifier: ^3.22.2
+    version: 3.22.2
   zustand:
     specifier: ^4.4.1
     version: 4.4.1(@types/react@18.2.21)(react@18.2.0)
@@ -85,12 +91,21 @@ devDependencies:
   '@shopify/eslint-plugin':
     specifier: ^43.0.0
     version: 43.0.0(@babel/core@7.22.11)(eslint@8.48.0)(prettier@3.0.3)(typescript@5.2.2)
+  '@tanstack/eslint-plugin-query':
+    specifier: ^4.34.1
+    version: 4.34.1(eslint@8.48.0)
   '@types/react':
     specifier: ~18.2.21
     version: 18.2.21
   babel-plugin-module-resolver:
     specifier: ^5.0.0
     version: 5.0.0
+  cross-env:
+    specifier: ^7.0.3
+    version: 7.0.3
+  dotenv:
+    specifier: ^16.3.1
+    version: 16.3.1
   eslint:
     specifier: ^8.47.0
     version: 8.48.0
@@ -2020,6 +2035,14 @@ packages:
       '@hapi/hoek': 9.3.0
     dev: false
 
+  /@hookform/resolvers@3.3.1(react-hook-form@7.46.1):
+    resolution: {integrity: sha512-K7KCKRKjymxIB90nHDQ7b9nli474ru99ZbqxiqDAWYsYhOsU3/4qLxW91y+1n04ic13ajjZ66L3aXbNef8PELQ==}
+    peerDependencies:
+      react-hook-form: ^7.0.0
+    dependencies:
+      react-hook-form: 7.46.1(react@18.2.0)
+    dev: false
+
   /@humanwhocodes/config-array@0.11.11:
     resolution: {integrity: sha512-N2brEuAadi0CcdeMXUkhbZB84eskAc8MEX1By6qEchoVywSgXPIjou4rYsl0V3Hj0ZnuGycGCjdNgockbzeWNA==}
     engines: {node: '>=10.10.0'}
@@ -2510,27 +2533,6 @@ packages:
       nanoid: 3.3.6
     dev: false
 
-  /@react-navigation/stack@6.3.17(@react-navigation/native@6.1.7)(react-native-gesture-handler@2.12.1)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.4)(react@18.2.0):
-    resolution: {integrity: sha512-8/8ZvJROK3fp6PRmQ9MrXd9epBowA8NkfCaWW/N9H5arqwNX9lTXAkmcjicRhjpX+UNlMBR9dTLkWvPRe2vY9A==}
-    peerDependencies:
-      '@react-navigation/native': ^6.0.0
-      react: '*'
-      react-native: '*'
-      react-native-gesture-handler: '>= 1.0.0'
-      react-native-safe-area-context: '>= 3.0.0'
-      react-native-screens: '>= 3.0.0'
-    dependencies:
-      '@react-navigation/elements': 1.3.18(@react-navigation/native@6.1.7)(react-native-safe-area-context@4.6.3)(react-native@0.72.4)(react@18.2.0)
-      '@react-navigation/native': 6.1.7(react-native@0.72.4)(react@18.2.0)
-      color: 4.2.3
-      react: 18.2.0
-      react-native: 0.72.4(@babel/core@7.22.11)(@babel/preset-env@7.22.10)(react@18.2.0)
-      react-native-gesture-handler: 2.12.1(react-native@0.72.4)(react@18.2.0)
-      react-native-safe-area-context: 4.6.3(react-native@0.72.4)(react@18.2.0)
-      react-native-screens: 3.22.1(react-native@0.72.4)(react@18.2.0)
-      warn-once: 0.1.1
-    dev: false
-
   /@segment/loosely-validate-event@2.0.0:
     resolution: {integrity: sha512-ZMCSfztDBqwotkl848ODgVcAmN4OItEWDCkshcKz0/W6gGSQayuuCtWV/MlodFivAZD793d6UgANd6wCXUfrIw==}
     dependencies:
@@ -2607,6 +2609,36 @@ packages:
     resolution: {integrity: sha512-V4BG07kuYSUkTCSBHG8G8TNhM+F19jXFWnQtzj+we8DrkpSBCee9Z3Ms8yiGer/dlmhe35/Xdgyo3/0rQKg7YA==}
     dependencies:
       '@sinonjs/commons': 3.0.0
+    dev: false
+
+  /@tanstack/eslint-plugin-query@4.34.1(eslint@8.48.0):
+    resolution: {integrity: sha512-RflOwyXamuHhuMX5RL6wtKiVw9Hi5Hhiv9gW2/ICVc4omflB+GflrxwvQ+EWRKrSRv3C0YcR0UzRxuiZ4mLq7Q==}
+    peerDependencies:
+      eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
+    dependencies:
+      eslint: 8.48.0
+    dev: true
+
+  /@tanstack/query-core@4.35.0:
+    resolution: {integrity: sha512-4GMcKQuLZQi6RFBiBZNsLhl+hQGYScRZ5ZoVq8QAzfqz9M7vcGin/2YdSESwl7WaV+Qzsb5CZOAbMBes4lNTnA==}
+    dev: false
+
+  /@tanstack/react-query@4.35.0(react-native@0.72.4)(react@18.2.0):
+    resolution: {integrity: sha512-LLYDNnM9ewYHgjm2rzhk4KG/puN2rdoqCUD+N9+V7SwlsYwJk5ypX58rpkoZAhFyZ+KmFUJ7Iv2lIEOoUqydIg==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      '@tanstack/query-core': 4.35.0
+      react: 18.2.0
+      react-native: 0.72.4(@babel/core@7.22.11)(@babel/preset-env@7.22.10)(react@18.2.0)
+      use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
   /@types/fined@1.1.3:
@@ -3889,6 +3921,14 @@ packages:
       parse-json: 4.0.0
     dev: false
 
+  /cross-env@7.0.3:
+    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
+    dev: true
+
   /cross-fetch@3.1.8:
     resolution: {integrity: sha512-cvA+JwZoU0Xq+h6WkMvAUqPEYy92Obet6UdKLfW60qn99ftItKjB5T+BkyWOFWe2pUyfQ+IJHmpOTznqk1M6Kg==}
     dependencies:
@@ -4192,6 +4232,11 @@ packages:
     resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
     engines: {node: '>=12'}
     dev: false
+
+  /dotenv@16.3.1:
+    resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==}
+    engines: {node: '>=12'}
+    dev: true
 
   /ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
@@ -8083,6 +8128,15 @@ packages:
       react: 18.2.0
     dev: false
 
+  /react-hook-form@7.46.1(react@18.2.0):
+    resolution: {integrity: sha512-0GfI31LRTBd5tqbXMGXT1Rdsv3rnvy0FjEk8Gn9/4tp6+s77T7DPZuGEpBRXOauL+NhyGT5iaXzdIM2R6F/E+w==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /react-i18next@13.2.1(i18next@23.4.6)(react-native@0.72.4)(react@18.2.0):
     resolution: {integrity: sha512-XhMsnGgJnytWfi2Q70HMYfm+zysPUu1Pz+It6I87WwaeclGY+W8W1c11uENEMNg+Xb+mNrGuo8GEDuQDOgO+oQ==}
     peerDependencies:
@@ -9814,6 +9868,10 @@ packages:
   /yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+
+  /zod@3.22.2:
+    resolution: {integrity: sha512-wvWkphh5WQsJbVk1tbx1l1Ly4yg+XecD+Mq280uBGt9wa5BKSWf4Mhp6GmrkPixhMxmabYY7RbzlwVP32pbGCg==}
+    dev: false
 
   /zustand@4.4.1(@types/react@18.2.21)(react@18.2.0):
     resolution: {integrity: sha512-QCPfstAS4EBiTQzlaGP1gmorkh/UL1Leaj2tdj+zZCZ/9bm0WS7sI2wnfD5lpOszFqWJ1DcPnGoY8RDL61uokw==}

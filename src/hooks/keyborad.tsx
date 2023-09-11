@@ -11,7 +11,7 @@ export const useSoftKeyboardEffect = () => {
     console.log('inside useSoftKeyboardEffect');
     AvoidSoftInput.setShouldMimicIOSBehavior(true);
     AvoidSoftInput.setEnabled(true);
-    // AvoidSoftInput.setAvoidOffset(30);
+    //AvoidSoftInput.setAvoidOffset(50);
     AvoidSoftInput.setShowAnimationDelay(0);
     AvoidSoftInput.setShowAnimationDuration(150);
     AvoidSoftInput.setHideAnimationDuration(150);

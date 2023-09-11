@@ -3,11 +3,10 @@ import {
   ViewProps as RNViewProps,
   StyleSheet,
 } from 'react-native';
-import {useTheme} from '@react-navigation/native';
+import { useSelectedTheme } from '@/hooks/use-selected-theme';
 
-const View = (props: RNViewProps) => {
-  const {colors} = useTheme();
-
+export const View = (props: RNViewProps) => {
+  const {colors} = useSelectedTheme();
   return (
     <RNView
       {...props}
@@ -20,4 +19,3 @@ const View = (props: RNViewProps) => {
     />
   );
 };
-export default View;

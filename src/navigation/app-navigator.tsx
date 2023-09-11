@@ -8,6 +8,7 @@ import {
   // don't remove for generator (import)
   Profile,
 } from '@/screens/app-screens';
+import { useSelectedTheme } from '@/hooks/use-selected-theme';
 
 export type AppStackParamList = {
   // don't remove for generator (param)
@@ -34,7 +35,7 @@ const routes: (IStackRouteType<AppStackParamList> & {title: string})[] = [
 
 export const AppNavigator = () => {
   const {t} = useTranslation();
-
+  const {colors} = useSelectedTheme();
   return (
     <Stack.Navigator>
       {routes.map((route, index) => {
@@ -43,6 +44,7 @@ export const AppNavigator = () => {
             key={route.name}
             options={{
               title: t(`routes.${route.title as keyof AppStackParamList}`),
+              headerStyle: {backgroundColor: colors.background},
               ...route.options,
             }}
             {...route}

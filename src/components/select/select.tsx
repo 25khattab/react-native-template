@@ -1,10 +1,8 @@
 import * as React from 'react';
-import {useTheme} from '@react-navigation/native';
 import {StyleSheet, TouchableOpacity} from 'react-native';
 
+import {Text, View} from '../core';
 import {useModalRef} from '../modal';
-import View from '../core/View';
-import Text from '../core/Text';
 
 import {Arrow} from './icons';
 import type {Option} from './options';
@@ -13,6 +11,7 @@ import {Options} from './options';
 import {ExtendedThemeType} from '@/constants/colors';
 import {SIZES} from '@/constants/spacing';
 import {useLayout} from '@/features';
+import {useSelectedTheme} from '@/hooks/use-selected-theme';
 
 export interface SelectProps {
   value?: string | number;
@@ -43,9 +42,9 @@ export const Select = (props: SelectProps) => {
     () => optionsRef.current?.dismiss({duration: 500}),
     [optionsRef],
   );
-  const {colors, dark} = useTheme();
+  const {colors, isDark} = useSelectedTheme();
   const isRTL = useLayout((state) => state.RTL);
-  const styles = generateStyles(isRTL, colors, dark, error);
+  const styles = generateStyles(isRTL, colors, isDark, error);
   const onSelectOption = React.useCallback(
     (option: Option) => {
       onSelect?.(option.value);
@@ -71,7 +70,7 @@ export const Select = (props: SelectProps) => {
           <View style={styles.textValueContainer}>
             <Text style={styles.textValue}>{textValue}</Text>
           </View>
-          <Arrow color={colors.primaryText} />
+          <Arrow color={colors.text} />
         </TouchableOpacity>
         {error && <Text style={styles.errorText}>{error}</Text>}
       </View>
@@ -99,8 +98,8 @@ const generateStyles = (
         ? colors.alert
         : dark
         ? colors.gray
-        : colors.lightGray,
-      borderColor: dark ? undefined : colors.gray,
+        : colors.lightGray2,
+      borderColor: error ? colors.alert : dark ? undefined : colors.gray,
     },
     textValueContainer: {flex: 1},
     textValue: {color: error ? colors.alert : undefined},

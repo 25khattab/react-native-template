@@ -6,5 +6,9 @@
     "Profile": "الملف الشخصي",
     "Tab": "test",
     "Login": "تسجيل دخول"
+  },
+  "common":{
+    "theme":"Theme"
+    
   }
 }

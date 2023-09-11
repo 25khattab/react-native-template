@@ -8,18 +8,47 @@
       "distribution": "internal",
       "channel": "development",
       "android": {
-        "buildType": "apk"
+        "buildType": "apk",
+        "image": "latest"
       },
       "env": {
-        "APP_VARIANT": "development"
+        "APP_ENV": "development",
+        "EXPO_NO_DOTENV": "1"
       }
     },
-    "preview": {
+    "staging": {
+      "channel": "staging",
       "distribution": "internal",
-      "channel": "preview"
+      "ios": {
+        "image": "latest"
+      },
+      "android": {
+        "buildType": "apk",
+        "image": "latest"
+      },
+      "env": {
+        "APP_ENV": "staging",
+        "EXPO_NO_DOTENV": "1",
+        "FLIPPER_DISABLE": "1"
+      }
     },
     "production": {
-      "channel": "production"
+      "channel": "production",
+      "distribution": "store",
+      "ios": {
+        "image": "latest",
+        "autoIncrement": "buildNumber"
+      },
+      "android": {
+        "buildType": "app-bundle",
+        "image": "latest",
+        "autoIncrement": "versionCode"
+      },
+      "env": {
+        "EXPO_NO_DOTENV": "1",
+        "APP_ENV": "production",
+        "FLIPPER_DISABLE": "1"
+      }
     }
   },
   "submit": {

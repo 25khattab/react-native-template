@@ -1,14 +1,13 @@
 import * as React from 'react';
 import {Pressable, StyleSheet} from 'react-native';
-import {useTheme} from '@react-navigation/native';
 
-import View from '../core/View';
-import Text from '../core/Text';
+import {Text, View} from '../core';
 
 import {XClose} from './x-close';
 
 import {useLayout} from '@/features';
 import {SIZES} from '@/constants/spacing';
+import {useSelectedTheme} from '@/hooks/use-selected-theme';
 
 type ModalHeaderProps = {
   title?: string;
@@ -17,23 +16,27 @@ type ModalHeaderProps = {
 
 export const ModalHeader = React.memo(({title, dismiss}: ModalHeaderProps) => {
   const isRTL = useLayout((state) => state.RTL);
+  const {isDark, colors} = useSelectedTheme();
   const styles = StyleSheet.create({
     container: {
       flexDirection: isRTL ? 'row-reverse' : 'row',
       paddingHorizontal: SIZES.medium,
       paddingVertical: SIZES.small,
+      backgroundColor: 'transparent',
     },
     svg: {
       width: SIZES.xLarge,
       height: SIZES.xLarge,
+      backgroundColor: 'transparent',
     },
+    textContainer: {flex: 1, backgroundColor: 'transparent'},
     titleText: {textAlign: 'center', fontSize: SIZES.large, fontWeight: 'bold'},
   });
   return (
     <View style={styles.container}>
       <View style={styles.svg} />
-      <View style={{flex: 1}}>
-        <Text style={styles.titleText}>{title}</Text>
+      <View style={styles.textContainer}>
+        <Text style={styles.titleText}>asd</Text>
       </View>
       <CloseButton close={dismiss} />
     </View>
@@ -41,7 +44,8 @@ export const ModalHeader = React.memo(({title, dismiss}: ModalHeaderProps) => {
 });
 
 const CloseButton = ({close}: {close: () => void}) => {
-  const {colors} = useTheme();
+  const {colors} = useSelectedTheme();
+
   return (
     <Pressable
       onPress={close}
@@ -56,7 +60,7 @@ const CloseButton = ({close}: {close: () => void}) => {
       accessibilityRole="button"
       accessibilityHint="closes the modal"
     >
-      <XClose fill={colors.primaryText} />
+      <XClose fill={colors.text} />
     </Pressable>
   );
 };
