@@ -14,7 +14,6 @@ export const Text = (props: RNTextProps) => {
         {
           textAlign: isRTL ? 'right' : 'left',
           color: colors.text,
-          writingDirection: isRTL ? 'rtl' : 'ltr',
         },
         props.style,
       ]}

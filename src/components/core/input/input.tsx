@@ -33,8 +33,8 @@ export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
         placeholderTextColor={colors.lighterText}
         onBlur={onBlur}
         onFocus={onFocus}
-        {...inputProps}
         style={styles.textInputContainer}
+        {...inputProps}
       />
       {error && <Text style={styles.errorText}>{error}</Text>}
     </View>
@@ -55,6 +55,7 @@ const generateStyles = (
       borderWidth: 1,
       paddingVertical: SIZES.medium,
       paddingHorizontal: SIZES.small,
+      textAlign:isRTL ? 'right' : 'left',
       borderRadius: SIZES.medium,
       backgroundColor: colors.background,
       borderColor: error ? colors.alert : colors.border,

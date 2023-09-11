@@ -1,12 +1,12 @@
 import {useNavigation} from '@react-navigation/native';
-import {Button, StyleSheet, useColorScheme} from 'react-native';
+import {Button, StyleSheet} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
 import {ExtendedThemeType} from '@/constants/colors';
 import {SIZES} from '@/constants/spacing';
 import {useAuth, useLayout} from '@/features';
-import {Text, View} from '@/components';
-import { useSelectedTheme } from '@/hooks';
+import {Text, ThemeSwitcher, View} from '@/components';
+import {useSelectedTheme} from '@/hooks';
 
 export const Home = () => {
   const {navigate} = useNavigation();
@@ -15,7 +15,6 @@ export const Home = () => {
   const styles = generateStyles(isRTL, colors);
   const signOut = useAuth((s) => s.signOut);
   const layout = useLayout();
-  const scheme = useColorScheme();
   const {t} = useTranslation();
   return (
     <View style={styles.container}>
@@ -29,22 +28,12 @@ export const Home = () => {
         title="change language"
         onPress={() => layout.setLanguage(layout.lang === 'ar' ? 'en' : 'ar')}
       />
-      <Button
-        title="change theme"
-        onPress={() =>
-          layout.setTheme(
-            (layout.theme === 'system' && scheme === 'dark') ||
-              layout.theme === 'dark'
-              ? 'light'
-              : 'dark',
-          )
-        }
-      />
+      <ThemeSwitcher />
     </View>
   );
 };
 
-const generateStyles = (isRTL: boolean, color: ExtendedThemeType['colors']) =>
+const generateStyles = (isRTL: boolean, colors: ExtendedThemeType['colors']) =>
   StyleSheet.create({
     container: {
       flex: 1,

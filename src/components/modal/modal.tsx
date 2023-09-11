@@ -31,7 +31,7 @@ export const Modal = React.forwardRef(
     );
     const bottomSheetRef = useModalRef();
     const snapPoints = React.useMemo(() => _snapPoints, [_snapPoints]);
-    const {colors} = useSelectedTheme();
+    const {isDark,colors} = useSelectedTheme();
     const dismiss = React.useCallback(() => {
       bottomSheetRef.current?.dismiss();
     }, [bottomSheetRef]);
@@ -48,12 +48,11 @@ export const Modal = React.forwardRef(
             style={{
               alignSelf: 'center',
               height: 2,
-              width: "30%",
+              width: '30%',
               marginTop: SIZES.xSmall,
               backgroundColor: colors.backgroundTertiary,
-              borderRadius:SIZES.xxLarge
+              borderRadius: SIZES.xxLarge,
             }}
-            // className="mt-2 h-1 w-12 self-center rounded-lg bg-gray-400 dark:bg-gray-700"
           />
           <ModalHeader title={title} dismiss={dismiss} />
         </>
@@ -65,6 +64,9 @@ export const Modal = React.forwardRef(
       <BottomSheetModal
         {...props}
         {...detachedProps}
+        backgroundStyle={{
+          backgroundColor: isDark ? colors.darkGray2 : colors.white,
+        }}
         ref={bottomSheetRef}
         index={0}
         snapPoints={snapPoints}

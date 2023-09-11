@@ -8,13 +8,15 @@ import {AvoidSoftInput} from 'react-native-avoid-softinput';
 
 export const useSoftKeyboardEffect = () => {
   useFocusEffect(() => {
-    console.log('inside useSoftKeyboardEffect');
     AvoidSoftInput.setShouldMimicIOSBehavior(true);
     AvoidSoftInput.setEnabled(true);
     //AvoidSoftInput.setAvoidOffset(50);
+
+    AvoidSoftInput.setEasing('easeInOut');
+    AvoidSoftInput.setAdjustResize();
     AvoidSoftInput.setShowAnimationDelay(0);
-    AvoidSoftInput.setShowAnimationDuration(150);
-    AvoidSoftInput.setHideAnimationDuration(150);
+    AvoidSoftInput.setShowAnimationDuration(0);
+    AvoidSoftInput.setHideAnimationDuration(100);
     AvoidSoftInput.setHideAnimationDelay(0);
     return () => {
       AvoidSoftInput.setAvoidOffset(0);

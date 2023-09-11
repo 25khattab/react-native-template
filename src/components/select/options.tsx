@@ -1,16 +1,16 @@
-import type {BottomSheetModal} from '@gorhom/bottom-sheet';
-import {BottomSheetFlatList} from '@gorhom/bottom-sheet';
+import type { BottomSheetModal } from '@gorhom/bottom-sheet';
+import { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 import * as React from 'react';
-import {Pressable, StyleSheet, type PressableProps} from 'react-native';
+import { Pressable, StyleSheet, type PressableProps } from 'react-native';
 
-import {Modal} from '../modal';
-import {Text} from '../core';
+import { Text } from '../core';
+import { Modal } from '../modal';
 
-import {Check} from './icons';
+import { Check } from './icons';
 
-import {useLayout} from '@/features';
-import {SIZES} from '@/constants/spacing';
-import {useSelectedTheme} from '@/hooks/use-selected-theme';
+import { SIZES } from '@/constants/spacing';
+import { useLayout } from '@/features';
+import { useSelectedTheme } from '@/hooks/use-selected-theme';
 
 export type Option = {label: string; value: string | number};
 
@@ -30,7 +30,7 @@ export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
     const snapPoints = React.useMemo(() => [height], [height]);
     const {isDark, colors} = useSelectedTheme();
     const renderSelectItem = ({item}: {item: Option}) => (
-      <Option
+      <OptionsItem
         key={`select-item-${item.value}`}
         label={item.label}
         selected={value === item.value}
@@ -43,9 +43,7 @@ export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
         ref={ref}
         index={0}
         snapPoints={snapPoints}
-        backgroundStyle={{
-          backgroundColor: isDark ? colors.darkGray2 : colors.white,
-        }}
+        
       >
         <BottomSheetFlatList
           data={options}
@@ -57,7 +55,7 @@ export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
   },
 );
 
-const Option = React.memo(
+const OptionsItem = React.memo(
   ({
     label,
     selected = false,
@@ -67,29 +65,33 @@ const Option = React.memo(
     label: string;
   }) => {
     const isRTL = useLayout((state) => state.RTL);
-    
+
     const {isDark, colors} = useSelectedTheme();
-    const styles = StyleSheet.create({
-      container: {
-        flexDirection: isRTL ? 'row-reverse' : 'row',
-        paddingHorizontal: SIZES.medium,
-        paddingVertical: SIZES.small,
-        alignItems: 'center',
-        borderBottomWidth: 1,
-        borderColor: colors.border,
-        backgroundColor: 'transparent',
-      },
-      svg: {
-        width: SIZES.xLarge,
-        height: SIZES.xLarge,
-      },
-      labelText: {
-        flex: 1,
-        //   textAlign: 'center',
-        //   fontSize: SIZES.large,
-        //   fontWeight: 'bold',
-      },
-    });
+    const styles = React.useMemo(
+      () =>
+        StyleSheet.create({
+          container: {
+            flexDirection: isRTL ? 'row-reverse' : 'row',
+            paddingHorizontal: SIZES.medium,
+            paddingVertical: SIZES.small,
+            alignItems: 'center',
+            borderBottomWidth: 1,
+            borderColor: colors.border,
+            backgroundColor: 'transparent',
+          },
+          svg: {
+            width: SIZES.xLarge,
+            height: SIZES.xLarge,
+          },
+          labelText: {
+            flex: 1,
+            //   textAlign: 'center',
+            fontSize: SIZES.medium,
+            // fontWeight: 'bold',
+          },
+        }),
+      [isRTL, colors],
+    );
     return (
       <Pressable style={styles.container} {...props}>
         <Text style={styles.labelText}>{label}</Text>

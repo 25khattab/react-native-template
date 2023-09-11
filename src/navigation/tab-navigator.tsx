@@ -1,13 +1,19 @@
 import {
+  BottomTabHeaderProps,
   BottomTabNavigationProp,
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
-import { type RouteProp} from '@react-navigation/native';
+import {type RouteProp} from '@react-navigation/native';
 import type {ComponentType} from 'react';
 import {useTranslation} from 'react-i18next';
 
 import {Settings, Home} from '@/screens/tab-screens';
-import { useSelectedTheme } from '@/hooks/use-selected-theme';
+import {useSelectedTheme} from '@/hooks/use-selected-theme';
+import {Text, View} from '@/components';
+import {Pressable, StyleSheet} from 'react-native';
+import {BackArrowIcon} from '@/svgs';
+import {useLayout} from '@/features';
+import {SIZES} from '@/constants/spacing';
 
 export type AppTabParamList = {
   // don't remove leave for generator (list)
@@ -68,12 +74,14 @@ export const TabNavigator = () => {
     <Tab.Navigator
       screenOptions={({route}) => ({
         tabBarActiveTintColor: colors.backgroundTertiary,
+        tabBarHideOnKeyboard: true,
         // tabBarStyle:{backgroundColor:colors.background}
+        tabBarStyle: {backgroundColor: colors.background},
       })}
     >
       <Tab.Group
         screenOptions={{
-          headerShown: false,
+          header: (props) => <TabHeader {...props} />,
         }}
       >
         {tabs.map(({name, component, label}) => {
@@ -90,5 +98,49 @@ export const TabNavigator = () => {
         })}
       </Tab.Group>
     </Tab.Navigator>
+  );
+};
+
+const TabHeader = (props: BottomTabHeaderProps) => {
+  const isRTL = useLayout((state) => state.RTL);
+  const {isDark, colors} = useSelectedTheme();
+  const styles = StyleSheet.create({});
+  const canGoBack = props.navigation.canGoBack();
+  const navigateBack = () => {
+    props.navigation.goBack();
+  };
+  return (
+    <View
+      style={{
+        backgroundColor: colors.background,
+        flexDirection: isRTL ? 'row-reverse' : 'row',
+        paddingVertical: SIZES.medium,
+        paddingHorizontal: SIZES.xSmall,
+        borderBottomWidth: 1,
+        borderColor: colors.border,
+        columnGap: SIZES.xSmall,
+        alignItems: 'center',
+      }}
+    >
+      {canGoBack && (
+        <Pressable
+          onPress={navigateBack}
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+          hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}
+          accessibilityLabel="close modal"
+          accessibilityRole="button"
+          accessibilityHint="closes the modal"
+        >
+          <BackArrowIcon supportRTL={isRTL} color={colors.text} />
+        </Pressable>
+      )}
+
+      <Text style={{fontSize: SIZES.xLarge, fontWeight: '800'}}>
+        {props.options.title}
+      </Text>
+    </View>
   );
 };

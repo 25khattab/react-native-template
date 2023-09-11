@@ -16,8 +16,20 @@ type ModalHeaderProps = {
 
 export const ModalHeader = React.memo(({title, dismiss}: ModalHeaderProps) => {
   const isRTL = useLayout((state) => state.RTL);
-  const {isDark, colors} = useSelectedTheme();
-  const styles = StyleSheet.create({
+  const styles = React.useMemo(() => generateStyles(isRTL), [isRTL]);
+  return (
+    <View style={styles.container}>
+      <View style={styles.svg} />
+      <View style={styles.textContainer}>
+        <Text style={styles.titleText}>{title}</Text>
+      </View>
+      <CloseButton close={dismiss} />
+    </View>
+  );
+});
+
+const generateStyles = (isRTL: boolean) =>
+  StyleSheet.create({
     container: {
       flexDirection: isRTL ? 'row-reverse' : 'row',
       paddingHorizontal: SIZES.medium,
@@ -32,16 +44,6 @@ export const ModalHeader = React.memo(({title, dismiss}: ModalHeaderProps) => {
     textContainer: {flex: 1, backgroundColor: 'transparent'},
     titleText: {textAlign: 'center', fontSize: SIZES.large, fontWeight: 'bold'},
   });
-  return (
-    <View style={styles.container}>
-      <View style={styles.svg} />
-      <View style={styles.textContainer}>
-        <Text style={styles.titleText}>asd</Text>
-      </View>
-      <CloseButton close={dismiss} />
-    </View>
-  );
-});
 
 const CloseButton = ({close}: {close: () => void}) => {
   const {colors} = useSelectedTheme();

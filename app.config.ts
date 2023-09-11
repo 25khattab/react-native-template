@@ -27,6 +27,7 @@ export default ({config}: ConfigContext): ExpoConfig => ({
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#ffffff',
     },
+    softwareKeyboardLayoutMode: 'resize',
     package: Env.PACKAGE,
   },
   web: {
@@ -38,6 +39,14 @@ export default ({config}: ConfigContext): ExpoConfig => ({
       'expo-updates',
       {
         username: Env.EXPO_ACCOUNT_OWNER,
+      },
+    ],
+    [
+      'expo-build-properties',
+      {
+        android: {
+          kotlinVersion: '1.7.22', // <-- add a version here for resolution, version can be newer depending on the Expo SDK version used in the project
+        },
       },
     ],
   ],
