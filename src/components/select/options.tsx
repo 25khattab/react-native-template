@@ -1,16 +1,22 @@
-import type { BottomSheetModal } from '@gorhom/bottom-sheet';
-import { BottomSheetFlatList } from '@gorhom/bottom-sheet';
+import type {BottomSheetModal} from '@gorhom/bottom-sheet';
+import {BottomSheetFlatList} from '@gorhom/bottom-sheet';
 import * as React from 'react';
-import { Pressable, StyleSheet, type PressableProps } from 'react-native';
+import {
+  Pressable,
+  StyleSheet,
+  type PressableProps,
+  Dimensions,
+} from 'react-native';
 
-import { Text } from '../core';
-import { Modal } from '../modal';
+import {Text} from '../core';
+import {Modal} from '../modal';
 
-import { Check } from './icons';
+import {Check} from './icons';
 
-import { SIZES } from '@/constants/spacing';
-import { useLayout } from '@/features';
-import { useSelectedTheme } from '@/hooks/use-selected-theme';
+import {SIZES} from '@/constants/spacing';
+import {useLayout} from '@/features';
+import {useSelectedTheme} from '@/hooks/use-selected-theme';
+import {ExtendedThemeType} from '@/constants/colors';
 
 export type Option = {label: string; value: string | number};
 
@@ -27,8 +33,13 @@ function keyExtractor(item: Option) {
 export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
   ({options, onSelect, value}, ref) => {
     const height = options.length * 70 + 100;
-    const snapPoints = React.useMemo(() => [height], [height]);
-    const {isDark, colors} = useSelectedTheme();
+    const snapPoints = React.useMemo(() => {
+      const screenHeight = Dimensions.get('window').height;
+      if (screenHeight * 0.9 >= height) {
+        const prec = Math.trunc((height / screenHeight) * 100);
+        return [`${prec}%`];
+      } else return ['90%'];
+    }, [height]);
     const renderSelectItem = ({item}: {item: Option}) => (
       <OptionsItem
         key={`select-item-${item.value}`}
@@ -39,12 +50,7 @@ export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
     );
 
     return (
-      <Modal
-        ref={ref}
-        index={0}
-        snapPoints={snapPoints}
-        
-      >
+      <Modal ref={ref} index={0} snapPoints={snapPoints}>
         <BottomSheetFlatList
           data={options}
           keyExtractor={keyExtractor}
@@ -68,28 +74,7 @@ const OptionsItem = React.memo(
 
     const {isDark, colors} = useSelectedTheme();
     const styles = React.useMemo(
-      () =>
-        StyleSheet.create({
-          container: {
-            flexDirection: isRTL ? 'row-reverse' : 'row',
-            paddingHorizontal: SIZES.medium,
-            paddingVertical: SIZES.small,
-            alignItems: 'center',
-            borderBottomWidth: 1,
-            borderColor: colors.border,
-            backgroundColor: 'transparent',
-          },
-          svg: {
-            width: SIZES.xLarge,
-            height: SIZES.xLarge,
-          },
-          labelText: {
-            flex: 1,
-            //   textAlign: 'center',
-            fontSize: SIZES.medium,
-            // fontWeight: 'bold',
-          },
-        }),
+      () => generateOptionItemsStyles(isRTL, colors),
       [isRTL, colors],
     );
     return (
@@ -100,3 +85,29 @@ const OptionsItem = React.memo(
     );
   },
 );
+
+const generateOptionItemsStyles = (
+  isRTL: boolean,
+  colors: ExtendedThemeType['colors'],
+) =>
+  StyleSheet.create({
+    container: {
+      flexDirection: isRTL ? 'row-reverse' : 'row',
+      paddingHorizontal: SIZES.medium,
+      paddingVertical: SIZES.small,
+      alignItems: 'center',
+      borderBottomWidth: 1,
+      borderColor: colors.border,
+      backgroundColor: 'transparent',
+    },
+    svg: {
+      width: SIZES.xLarge,
+      height: SIZES.xLarge,
+    },
+    labelText: {
+      flex: 1,
+      //   textAlign: 'center',
+      fontSize: SIZES.medium,
+      // fontWeight: 'bold',
+    },
+  });

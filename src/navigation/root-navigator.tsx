@@ -51,7 +51,7 @@ export const RootNavigator = () => {
     return null;
   }
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={{dark:isDark,colors}}>
       <SafeAreaView
         style={{
           flex: 1,

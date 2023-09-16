@@ -68,13 +68,9 @@ export const ThemeSwitcher = ({}: ThemeSwitcherProps) => {
 const generateStyles = (isRTL: boolean, colors: ExtendedThemeType['colors']) =>
   StyleSheet.create({
     pressable: {
-      marginVertical: SIZES.medium,
       flexDirection: isRTL ? 'row-reverse' : 'row',
       alignItems: 'center',
       width: '100%',
-    },
-    pressableIcon: {
-      marginHorizontal: SIZES.medium,
     },
     pressableText: {
       fontSize: SIZES.medium,

@@ -48,7 +48,7 @@ const generateStyles = (
   error?: string,
 ) =>
   StyleSheet.create({
-    container: {marginBottom: SIZES.medium, rowGap: SIZES.xxSmall,},
+    container: { rowGap: SIZES.xxSmall},
     textInputContainer: {
       flexDirection: isRTL ? 'row-reverse' : 'row',
       alignItems: 'center',

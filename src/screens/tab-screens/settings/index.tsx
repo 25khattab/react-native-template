@@ -1,12 +1,11 @@
-import {useNavigation} from '@react-navigation/native';
-import {Button, ScrollView, StyleSheet} from 'react-native';
-import {useTranslation} from 'react-i18next';
+import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
+import { Button, ScrollView, StyleSheet } from 'react-native';
 
-import {Input, Text, View} from '@/components';
-import {ExtendedThemeType} from '@/constants/colors';
-import {SIZES} from '@/constants/spacing';
-import {useLayout} from '@/features';
-import {useSelectedTheme,useSoftKeyboardEffect} from '@/hooks';
+import { Input, Text, View } from '@/components';
+import { ExtendedThemeType } from '@/constants/colors';
+import { useLayout } from '@/features';
+import { useSelectedTheme, useSoftKeyboardEffect } from '@/hooks';
 
 export const Settings = () => {
   const navigate = useNavigation();
@@ -14,26 +13,153 @@ export const Settings = () => {
   const isRTL = useLayout((state) => state.RTL);
   const styles = generateStyles(isRTL, colors);
   const {t} = useTranslation();
-  useSoftKeyboardEffect()
+  useSoftKeyboardEffect();
   return (
     <ScrollView
-      style={{flex: 1,
-        backgroundColor:colors.background}}
-      contentContainerStyle={{padding: SIZES.medium}}
+      style={{
+        flex: 1,
+        //backgroundColor: colors.backgroundTertiary,
+      }}
+      contentContainerStyle={{
+        flexGrow: 1,
+        alignContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'stretch',
+        justifyContent: 'center',
+        paddingHorizontal: 10,
+        rowGap: 30,
+        backgroundColor: colors.background,
+      }}
     >
-      <View style={{rowGap: 30, backgroundColor: colors.background}}>
-        <Text>{t('routes.Settings')}</Text>
-        <Button
-          title="navigate to Home"
-          onPress={() => navigate.navigate('Home')}
+      <Text>{t('routes.Settings')}</Text>
+      <Button
+        title="navigate to Home"
+        onPress={() => navigate.navigate('Home')}
+      />
+      <Button
+        title="navigate to profile"
+        onPress={() => navigate.navigate('Profile')}
+      />
+      <View
+        style={{
+          flex: 1,
+          alignSelf: 'stretch',
+          backgroundColor: 'red',
+          rowGap: 30,
+        }}
+      >
+        <Input
+          style={{
+            alignSelf: 'stretch',
+            backgroundColor: 'white',
+            borderColor: 'black',
+            borderRadius: 10,
+            borderWidth: 1,
+            color: 'black',
+            fontSize: 18,
+            height: 60,
+
+            padding: 10,
+          }}
         />
-        <Button
-          title="navigate to profile"
-          onPress={() => navigate.navigate('Profile')}
+        <Input
+          style={{
+            alignSelf: 'stretch',
+            backgroundColor: 'white',
+            borderColor: 'black',
+            borderRadius: 10,
+            borderWidth: 1,
+            color: 'black',
+            fontSize: 18,
+            height: 60,
+            padding: 10,
+          }}
         />
-        <Input />
-        <Input />
-        <Input />
+        <Input
+          style={{
+            alignSelf: 'stretch',
+            backgroundColor: 'white',
+            borderColor: 'black',
+            borderRadius: 10,
+            borderWidth: 1,
+            color: 'black',
+            fontSize: 18,
+            height: 60,
+
+            padding: 10,
+          }}
+        />
+
+        <Input
+          style={{
+            alignSelf: 'stretch',
+            backgroundColor: 'white',
+            borderColor: 'black',
+            borderRadius: 10,
+            borderWidth: 1,
+            color: 'black',
+            fontSize: 18,
+            height: 60,
+
+            padding: 10,
+          }}
+        />
+        <Input
+          style={{
+            alignSelf: 'stretch',
+            backgroundColor: 'white',
+            borderColor: 'black',
+            borderRadius: 10,
+            borderWidth: 1,
+            color: 'black',
+            fontSize: 18,
+            height: 60,
+
+            padding: 10,
+          }}
+        />
+        <Input
+          style={{
+            alignSelf: 'stretch',
+            backgroundColor: 'white',
+            borderColor: 'black',
+            borderRadius: 10,
+            borderWidth: 1,
+            color: 'black',
+            fontSize: 18,
+            height: 60,
+
+            padding: 10,
+          }}
+        />
+        <Input
+          style={{
+            alignSelf: 'stretch',
+            backgroundColor: 'white',
+            borderColor: 'black',
+            borderRadius: 10,
+            borderWidth: 1,
+            color: 'black',
+            fontSize: 18,
+            height: 60,
+
+            padding: 10,
+          }}
+        />
+        <Input
+          style={{
+            alignSelf: 'stretch',
+            backgroundColor: 'white',
+            borderColor: 'black',
+            borderRadius: 10,
+            borderWidth: 1,
+            color: 'black',
+            fontSize: 18,
+            height: 60,
+
+            padding: 10,
+          }}
+        />
       </View>
     </ScrollView>
   );

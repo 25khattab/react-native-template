@@ -31,7 +31,7 @@ export const Modal = React.forwardRef(
     );
     const bottomSheetRef = useModalRef();
     const snapPoints = React.useMemo(() => _snapPoints, [_snapPoints]);
-    const {isDark,colors} = useSelectedTheme();
+    const {isDark, colors} = useSelectedTheme();
     const dismiss = React.useCallback(() => {
       bottomSheetRef.current?.dismiss();
     }, [bottomSheetRef]);
@@ -45,15 +45,19 @@ export const Modal = React.forwardRef(
       () => (
         <>
           <View
-            style={{
-              alignSelf: 'center',
-              height: 2,
-              width: '30%',
-              marginTop: SIZES.xSmall,
-              backgroundColor: colors.backgroundTertiary,
-              borderRadius: SIZES.xxLarge,
-            }}
-          />
+            style={{paddingTop: SIZES.xSmall, backgroundColor: 'transparent'}}
+          >
+            <View
+              style={{
+                alignSelf: 'center',
+                height: 5,
+                width: '30%',
+
+                backgroundColor: colors.backgroundTertiary,
+                borderRadius: SIZES.xxLarge,
+              }}
+            />
+          </View>
           <ModalHeader title={title} dismiss={dismiss} />
         </>
       ),
@@ -81,8 +85,8 @@ const getDetachedProps = (detached: boolean) => {
   if (detached) {
     return {
       detached: true,
-      bottomInset: 46,
-      style: {marginHorizontal: 16, overflow: 'hidden'},
+      bottomInset: SIZES.xxxxxxLarge,
+      // style: {marginHorizontal: 16, overflow: 'hidden'},
     } as Partial<BottomSheetModalProps>;
   }
   return {} as Partial<BottomSheetModalProps>;
