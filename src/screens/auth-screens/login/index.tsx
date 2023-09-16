@@ -52,39 +52,61 @@ export const Login = () => {
           flex: 1,
           backgroundColor: colors.background,
         }}
+        contentContainerStyle={{
+          justifyContent: 'center',
+          padding: SIZES.medium,
+          gap: 70,
+          flexGrow: 1,
+        }}
       >
-        <View
-          style={{
-            justifyContent: 'center',
-            padding: SIZES.medium,
-            gap: 70,
-            flex: 1,
-          }}
-        >
-          <Text>{t('routes.Login')}</Text>
-          <Text>Write any values</Text>
-          <ControlledInput
-            control={control}
-            name="email"
-            placeholder="Email"
-            textContentType="emailAddress"
-            keyboardType="email-address"
-            label="Email"
-          />
-          <ControlledInput
-            control={control}
-            name="password"
-            // label="Password"
-            placeholder="Password"
-            textContentType="password"
-            secureTextEntry
-          />
-          <Button
-            title="login"
-            testID="login-button"
-            onPress={handleSubmit(onSubmit)}
-          />
-        </View>
+        <Text>{t('routes.Login')}</Text>
+        <Text>Write any values</Text>
+        <ControlledInput
+          control={control}
+          name="email"
+          placeholder="Email"
+          textContentType="emailAddress"
+          keyboardType="email-address"
+          label="Email"
+        />
+        <ControlledInput
+          control={control}
+          name="password"
+          // label="Password"
+          placeholder="Password"
+          textContentType="password"
+          secureTextEntry
+        />
+
+        <ControlledInput
+          control={control}
+          name="password"
+          // label="Password"
+          placeholder="Password"
+          textContentType="password"
+          secureTextEntry
+        />
+        <ControlledInput
+          control={control}
+          name="password"
+          // label="Password"
+          placeholder="Password"
+          textContentType="password"
+          secureTextEntry
+        />
+        <ControlledInput
+          control={control}
+          name="password"
+          // label="Password"
+          placeholder="Password"
+          textContentType="password"
+          secureTextEntry
+        />
+        <Button
+          title="login"
+          testID="login-button"
+          onPress={handleSubmit(onSubmit)}
+        />
       </ScrollView>
     </SafeAreaView>
   );

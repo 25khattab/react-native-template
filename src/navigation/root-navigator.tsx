@@ -10,6 +10,7 @@ import {AuthNavigator} from './auth-navigator';
 
 import {useAuth, useLayout} from '@/features';
 import {useSelectedTheme} from '@/hooks';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 const Stack = createNativeStackNavigator();
 
@@ -52,9 +53,11 @@ export const RootNavigator = () => {
   }
   return (
     <NavigationContainer theme={{dark: isDark, colors}}>
-      <BottomSheetModalProvider>
-        <Root />
-      </BottomSheetModalProvider>
+      <SafeAreaProvider>
+        <BottomSheetModalProvider>
+          <Root />
+        </BottomSheetModalProvider>
+      </SafeAreaProvider>
       <StatusBar style={isDark ? 'light' : 'dark'} />
     </NavigationContainer>
   );
