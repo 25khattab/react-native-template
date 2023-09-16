@@ -4,6 +4,7 @@ import {
 } from '@react-navigation/native-stack';
 import {useTranslation} from 'react-i18next';
 import {Pressable, StyleSheet} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 import {TabNavigator} from './tab-navigator';
 import {IStackRouteType} from './types';
@@ -73,34 +74,43 @@ const AppNavigatorHeader = (props: NativeStackHeaderProps) => {
     props.navigation.goBack();
   };
   return (
-    <View
+    <SafeAreaView
+      edges={['left', 'right', 'top']}
       style={{
+        alignSelf: 'stretch',
+        flex: 1,
         backgroundColor: colors.background,
-        flexDirection: isRTL ? 'row-reverse' : 'row',
-        paddingVertical: SIZES.medium,
-        paddingHorizontal: SIZES.xSmall,
-        borderBottomWidth: 1,
-        borderColor: colors.border,
-        columnGap: SIZES.xSmall,
-        alignItems: 'center',
       }}
     >
-      {canGoBack && (
-        <Pressable
-          onPress={navigateBack}
-          style={{
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-          hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}
-        >
-          <BackArrowIcon supportRTL={isRTL} color={colors.text} />
-        </Pressable>
-      )}
+      <View
+        style={{
+          backgroundColor: colors.background,
+          flexDirection: isRTL ? 'row-reverse' : 'row',
+          paddingVertical: SIZES.medium,
+          paddingHorizontal: SIZES.xSmall,
+          borderBottomWidth: 1,
+          borderColor: colors.border,
+          columnGap: SIZES.xSmall,
+          alignItems: 'center',
+        }}
+      >
+        {canGoBack && (
+          <Pressable
+            onPress={navigateBack}
+            style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+            hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}
+          >
+            <BackArrowIcon supportRTL={isRTL} color={colors.text} />
+          </Pressable>
+        )}
 
-      <Text style={{fontSize: SIZES.xLarge, fontWeight: '800'}}>
-        {props.options.title}
-      </Text>
-    </View>
+        <Text style={{fontSize: SIZES.xLarge, fontWeight: '800'}}>
+          {props.options.title}
+        </Text>
+      </View>
+    </SafeAreaView>
   );
 };

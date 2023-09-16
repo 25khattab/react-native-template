@@ -1,6 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import {useTranslation} from 'react-i18next';
 import {Button, ScrollView, StyleSheet} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 import {Input, Text, View} from '@/components';
 import {ExtendedThemeType} from '@/constants/colors';
@@ -15,153 +16,162 @@ export const Settings = () => {
   const {t} = useTranslation();
   useSoftKeyboardEffect();
   return (
-    <ScrollView
+    <SafeAreaView
+      edges={['left', 'right', 'top']}
       style={{
-        flex: 1,
-        // backgroundColor: colors.backgroundTertiary,
-      }}
-      contentContainerStyle={{
-        flexGrow: 1,
-        alignContent: 'center',
-        alignItems: 'center',
         alignSelf: 'stretch',
-        justifyContent: 'center',
-        paddingHorizontal: 10,
-        rowGap: 30,
+        flex: 1,
         backgroundColor: colors.background,
       }}
     >
-      <Text>{t('routes.Settings')}</Text>
-      <Button
-        title="navigate to Home"
-        onPress={() => navigate.navigate('Home')}
-      />
-      <Button
-        title="navigate to profile"
-        onPress={() => navigate.navigate('Profile')}
-      />
-      <View
+      <ScrollView
         style={{
           flex: 1,
+          // backgroundColor: colors.backgroundTertiary,
+        }}
+        contentContainerStyle={{
+          flexGrow: 1,
+          alignContent: 'center',
+          alignItems: 'center',
           alignSelf: 'stretch',
-          backgroundColor: 'red',
+          justifyContent: 'center',
+          paddingHorizontal: 10,
           rowGap: 30,
+          backgroundColor: colors.background,
         }}
       >
-        <Input
-          style={{
-            alignSelf: 'stretch',
-            backgroundColor: 'white',
-            borderColor: 'black',
-            borderRadius: 10,
-            borderWidth: 1,
-            color: 'black',
-            fontSize: 18,
-            height: 60,
-
-            padding: 10,
-          }}
+        <Text>{t('routes.Settings')}</Text>
+        <Button
+          title="navigate to Home"
+          onPress={() => navigate.navigate('Home')}
         />
-        <Input
-          style={{
-            alignSelf: 'stretch',
-            backgroundColor: 'white',
-            borderColor: 'black',
-            borderRadius: 10,
-            borderWidth: 1,
-            color: 'black',
-            fontSize: 18,
-            height: 60,
-            padding: 10,
-          }}
+        <Button
+          title="navigate to profile"
+          onPress={() => navigate.navigate('Profile')}
         />
-        <Input
+        <View
           style={{
+            flex: 1,
             alignSelf: 'stretch',
-            backgroundColor: 'white',
-            borderColor: 'black',
-            borderRadius: 10,
-            borderWidth: 1,
-            color: 'black',
-            fontSize: 18,
-            height: 60,
-
-            padding: 10,
+            backgroundColor: 'red',
+            rowGap: 30,
           }}
-        />
+        >
+          <Input
+            style={{
+              alignSelf: 'stretch',
+              backgroundColor: 'white',
+              borderColor: 'black',
+              borderRadius: 10,
+              borderWidth: 1,
+              color: 'black',
+              fontSize: 18,
+              height: 60,
 
-        <Input
-          style={{
-            alignSelf: 'stretch',
-            backgroundColor: 'white',
-            borderColor: 'black',
-            borderRadius: 10,
-            borderWidth: 1,
-            color: 'black',
-            fontSize: 18,
-            height: 60,
+              padding: 10,
+            }}
+          />
+          <Input
+            style={{
+              alignSelf: 'stretch',
+              backgroundColor: 'white',
+              borderColor: 'black',
+              borderRadius: 10,
+              borderWidth: 1,
+              color: 'black',
+              fontSize: 18,
+              height: 60,
+              padding: 10,
+            }}
+          />
+          <Input
+            style={{
+              alignSelf: 'stretch',
+              backgroundColor: 'white',
+              borderColor: 'black',
+              borderRadius: 10,
+              borderWidth: 1,
+              color: 'black',
+              fontSize: 18,
+              height: 60,
 
-            padding: 10,
-          }}
-        />
-        <Input
-          style={{
-            alignSelf: 'stretch',
-            backgroundColor: 'white',
-            borderColor: 'black',
-            borderRadius: 10,
-            borderWidth: 1,
-            color: 'black',
-            fontSize: 18,
-            height: 60,
+              padding: 10,
+            }}
+          />
 
-            padding: 10,
-          }}
-        />
-        <Input
-          style={{
-            alignSelf: 'stretch',
-            backgroundColor: 'white',
-            borderColor: 'black',
-            borderRadius: 10,
-            borderWidth: 1,
-            color: 'black',
-            fontSize: 18,
-            height: 60,
+          <Input
+            style={{
+              alignSelf: 'stretch',
+              backgroundColor: 'white',
+              borderColor: 'black',
+              borderRadius: 10,
+              borderWidth: 1,
+              color: 'black',
+              fontSize: 18,
+              height: 60,
 
-            padding: 10,
-          }}
-        />
-        <Input
-          style={{
-            alignSelf: 'stretch',
-            backgroundColor: 'white',
-            borderColor: 'black',
-            borderRadius: 10,
-            borderWidth: 1,
-            color: 'black',
-            fontSize: 18,
-            height: 60,
+              padding: 10,
+            }}
+          />
+          <Input
+            style={{
+              alignSelf: 'stretch',
+              backgroundColor: 'white',
+              borderColor: 'black',
+              borderRadius: 10,
+              borderWidth: 1,
+              color: 'black',
+              fontSize: 18,
+              height: 60,
 
-            padding: 10,
-          }}
-        />
-        <Input
-          style={{
-            alignSelf: 'stretch',
-            backgroundColor: 'white',
-            borderColor: 'black',
-            borderRadius: 10,
-            borderWidth: 1,
-            color: 'black',
-            fontSize: 18,
-            height: 60,
+              padding: 10,
+            }}
+          />
+          <Input
+            style={{
+              alignSelf: 'stretch',
+              backgroundColor: 'white',
+              borderColor: 'black',
+              borderRadius: 10,
+              borderWidth: 1,
+              color: 'black',
+              fontSize: 18,
+              height: 60,
 
-            padding: 10,
-          }}
-        />
-      </View>
-    </ScrollView>
+              padding: 10,
+            }}
+          />
+          <Input
+            style={{
+              alignSelf: 'stretch',
+              backgroundColor: 'white',
+              borderColor: 'black',
+              borderRadius: 10,
+              borderWidth: 1,
+              color: 'black',
+              fontSize: 18,
+              height: 60,
+
+              padding: 10,
+            }}
+          />
+          <Input
+            style={{
+              alignSelf: 'stretch',
+              backgroundColor: 'white',
+              borderColor: 'black',
+              borderRadius: 10,
+              borderWidth: 1,
+              color: 'black',
+              fontSize: 18,
+              height: 60,
+
+              padding: 10,
+            }}
+          />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

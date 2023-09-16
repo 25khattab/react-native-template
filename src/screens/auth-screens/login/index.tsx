@@ -3,6 +3,7 @@ import {useTranslation} from 'react-i18next';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {z} from 'zod';
 import {useForm} from 'react-hook-form';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 import {useAuth} from '@/features';
 import {useSelectedTheme, useSoftKeyboardEffect} from '@/hooks';
@@ -39,45 +40,53 @@ export const Login = () => {
   };
 
   return (
-    <ScrollView
+    <SafeAreaView
       style={{
+        alignSelf: 'stretch',
         flex: 1,
         backgroundColor: colors.background,
       }}
     >
-      <View
+      <ScrollView
         style={{
-          justifyContent: 'center',
-          padding: SIZES.medium,
-          gap: 70,
           flex: 1,
+          backgroundColor: colors.background,
         }}
       >
-        <Text>{t('routes.Login')}</Text>
-        <Text>Write any values</Text>
-        <ControlledInput
-          control={control}
-          name="email"
-          placeholder="Email"
-          textContentType="emailAddress"
-          keyboardType="email-address"
-          label="Email"
-        />
-        <ControlledInput
-          control={control}
-          name="password"
-          // label="Password"
-          placeholder="Password"
-          textContentType="password"
-          secureTextEntry
-        />
-        <Button
-          title="login"
-          testID="login-button"
-          onPress={handleSubmit(onSubmit)}
-        />
-      </View>
-    </ScrollView>
+        <View
+          style={{
+            justifyContent: 'center',
+            padding: SIZES.medium,
+            gap: 70,
+            flex: 1,
+          }}
+        >
+          <Text>{t('routes.Login')}</Text>
+          <Text>Write any values</Text>
+          <ControlledInput
+            control={control}
+            name="email"
+            placeholder="Email"
+            textContentType="emailAddress"
+            keyboardType="email-address"
+            label="Email"
+          />
+          <ControlledInput
+            control={control}
+            name="password"
+            // label="Password"
+            placeholder="Password"
+            textContentType="password"
+            secureTextEntry
+          />
+          <Button
+            title="login"
+            testID="login-button"
+            onPress={handleSubmit(onSubmit)}
+          />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

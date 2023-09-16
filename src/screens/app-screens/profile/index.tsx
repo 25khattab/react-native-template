@@ -1,5 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import {Button, StyleSheet} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 import {Text, ThemeSwitcher, View} from '@/components';
 import {ExtendedThemeType} from '@/constants/colors';
@@ -13,11 +14,19 @@ export const Profile = () => {
   const isRTL = useLayout((s) => s.RTL);
   const styles = generateStyles(isRTL, colors);
   return (
-    <View style={styles.container}>
-      <Text>Profile</Text>
-      <Button title="navigate to home" onPress={() => navigate('Home')} />
-      <ThemeSwitcher />
-    </View>
+    <SafeAreaView
+      style={{
+        alignSelf: 'stretch',
+        flex: 1,
+        backgroundColor: colors.background,
+      }}
+    >
+      <View style={styles.container}>
+        <Text>Profile</Text>
+        <Button title="navigate to home" onPress={() => navigate('Home')} />
+        <ThemeSwitcher />
+      </View>
+    </SafeAreaView>
   );
 };
 
