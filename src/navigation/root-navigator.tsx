@@ -10,6 +10,7 @@ import {AuthNavigator} from './auth-navigator';
 
 import {useAuth, useLayout} from '@/features';
 import {useSelectedTheme} from '@/hooks';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 
 const Stack = createNativeStackNavigator();
 
@@ -58,7 +59,9 @@ export const RootNavigator = () => {
           backgroundColor: colors.background,
         }}
       >
-        <Root />
+        <BottomSheetModalProvider>
+          <Root />
+        </BottomSheetModalProvider>
       </SafeAreaView>
       <StatusBar style={isDark ? 'light' : 'dark'} />
     </NavigationContainer>

@@ -31,11 +31,9 @@ export default function App() {
   // }, []);
   return (
     <GestureHandlerRootView style={styles.container}>
-      <BottomSheetModalProvider>
-        <APIProvider>
-          <RootNavigator />
-        </APIProvider>
-      </BottomSheetModalProvider>
+      <APIProvider>
+        <RootNavigator />
+      </APIProvider>
     </GestureHandlerRootView>
   );
 }
