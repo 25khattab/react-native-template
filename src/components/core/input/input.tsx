@@ -8,7 +8,7 @@ import {Text} from '../Text';
 import {ExtendedThemeType} from '@/constants/colors';
 import {useLayout} from '@/features';
 import {SIZES} from '@/constants/spacing';
-import { useSelectedTheme } from '@/hooks/use-selected-theme';
+import {useSelectedTheme} from '@/hooks/use-selected-theme';
 
 export interface NInputProps extends TextInputProps {
   label?: string;
@@ -48,14 +48,14 @@ const generateStyles = (
   error?: string,
 ) =>
   StyleSheet.create({
-    container: { rowGap: SIZES.xxSmall},
+    container: {rowGap: SIZES.xxSmall},
     textInputContainer: {
       flexDirection: isRTL ? 'row-reverse' : 'row',
       alignItems: 'center',
       borderWidth: 1,
       paddingVertical: SIZES.medium,
       paddingHorizontal: SIZES.small,
-      textAlign:isRTL ? 'right' : 'left',
+      textAlign: isRTL ? 'right' : 'left',
       borderRadius: SIZES.medium,
       backgroundColor: colors.background,
       borderColor: error ? colors.alert : colors.border,

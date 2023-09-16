@@ -1,2 +1,2 @@
 export * from './keyborad';
-export * from './use-selected-theme'
+export * from './use-selected-theme';

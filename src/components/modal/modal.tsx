@@ -4,10 +4,11 @@ import * as React from 'react';
 
 import {View} from '../core';
 
-import {useSelectedTheme} from '@/hooks/use-selected-theme';
 import {renderBackdrop} from './modal-backdrop';
 import {ModalHeader} from './modal-header';
 import type {ModalProps, ModalRef} from './types';
+
+import {useSelectedTheme} from '@/hooks/use-selected-theme';
 import {SIZES} from '@/constants/spacing';
 
 export const useModalRef = () => {

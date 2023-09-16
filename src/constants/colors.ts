@@ -1,4 +1,4 @@
-import { DarkTheme, DefaultTheme } from "@react-navigation/native";
+import {DarkTheme, DefaultTheme} from '@react-navigation/native';
 
 /**
  * this will hold every color in the application
@@ -53,15 +53,15 @@ const ColorsDark = {
   border: COLORS.lightGray2,
 };
 
-export const MyLightTheme:ExtendedThemeType = {
+export const MyLightTheme: ExtendedThemeType = {
   dark: false,
-  colors: {...DefaultTheme["colors"] , ...ColorsLight},
+  colors: {...DefaultTheme.colors, ...ColorsLight},
 };
 
-export const MyDarkTheme:ExtendedThemeType = {
+export const MyDarkTheme: ExtendedThemeType = {
   dark: true,
   colors: {
-    ...DarkTheme["colors"] ,
+    ...DarkTheme.colors,
     ...ColorsDark,
   },
 };
@@ -89,7 +89,7 @@ export interface ExtendedThemeType {
     darkGray1: string;
     darkGray2: string;
     darkGray3: string;
-    card:string;
-    notification:string;
+    card: string;
+    notification: string;
   };
 }

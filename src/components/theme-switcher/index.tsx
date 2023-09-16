@@ -1,16 +1,16 @@
 import {StyleSheet, TouchableOpacity} from 'react-native';
+import {useCallback, useMemo} from 'react';
+import {useTranslation} from 'react-i18next';
 
 import {Text} from '../core';
+import {useModalRef} from '../modal';
+import {Option, Options} from '../select';
 
 import {ExtendedThemeType} from '@/constants/colors';
 import {SIZES} from '@/constants/spacing';
 import {useLayout} from '@/features';
 import {ThemeType} from '@/features/layout/utils';
-import {useCallback, useMemo} from 'react';
-import {useTranslation} from 'react-i18next';
-import {useModalRef} from '../modal';
-import {Option, Options} from '../select';
-import { useSelectedTheme } from '@/hooks/use-selected-theme';
+import {useSelectedTheme} from '@/hooks/use-selected-theme';
 
 interface ThemeSwitcherProps {}
 

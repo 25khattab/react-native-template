@@ -2,20 +2,18 @@ import {
   NativeStackHeaderProps,
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
+import {Pressable, StyleSheet} from 'react-native';
 
-import { TabNavigator } from './tab-navigator';
-import { IStackRouteType } from './types';
+import {TabNavigator} from './tab-navigator';
+import {IStackRouteType} from './types';
 
-import { Text, View } from '@/components';
-import { SIZES } from '@/constants/spacing';
-import { useLayout } from '@/features';
-import { useSelectedTheme } from '@/hooks/use-selected-theme';
-import {
-  Profile,
-} from '@/screens/app-screens';
-import { BackArrowIcon } from '@/svgs';
-import { Pressable, StyleSheet } from 'react-native';
+import {Text, View} from '@/components';
+import {SIZES} from '@/constants/spacing';
+import {useLayout} from '@/features';
+import {useSelectedTheme} from '@/hooks/use-selected-theme';
+import {Profile} from '@/screens/app-screens';
+import {BackArrowIcon} from '@/svgs';
 
 export type AppStackParamList = {
   // don't remove for generator (param)

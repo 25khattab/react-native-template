@@ -7,8 +7,7 @@
     "Tab": "test",
     "Login": "Login"
   },
-  "common":{
-    "theme":"Theme"
-    
+  "common": {
+    "theme": "Theme"
   }
 }

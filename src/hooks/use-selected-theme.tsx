@@ -1,5 +1,6 @@
-import {useLayout} from '@/features';
 import {useColorScheme} from 'react-native';
+
+import {useLayout} from '@/features';
 import {MyDarkTheme, MyLightTheme} from '@/constants/colors';
 
 export const useSelectedTheme = () => {
@@ -9,7 +10,7 @@ export const useSelectedTheme = () => {
     (theme === 'system' && scheme === 'dark') || theme === 'dark',
   );
 
-  const colors = darkTheme ? MyDarkTheme['colors'] : MyLightTheme['colors'];
+  const colors = darkTheme ? MyDarkTheme.colors : MyLightTheme.colors;
   const isDark = darkTheme;
 
   return {colors, isDark} as const;

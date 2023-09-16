@@ -1,11 +1,11 @@
-import { useNavigation } from '@react-navigation/native';
-import { useTranslation } from 'react-i18next';
-import { Button, ScrollView, StyleSheet } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {useTranslation} from 'react-i18next';
+import {Button, ScrollView, StyleSheet} from 'react-native';
 
-import { Input, Text, View } from '@/components';
-import { ExtendedThemeType } from '@/constants/colors';
-import { useLayout } from '@/features';
-import { useSelectedTheme, useSoftKeyboardEffect } from '@/hooks';
+import {Input, Text, View} from '@/components';
+import {ExtendedThemeType} from '@/constants/colors';
+import {useLayout} from '@/features';
+import {useSelectedTheme, useSoftKeyboardEffect} from '@/hooks';
 
 export const Settings = () => {
   const navigate = useNavigation();
@@ -18,7 +18,7 @@ export const Settings = () => {
     <ScrollView
       style={{
         flex: 1,
-        //backgroundColor: colors.backgroundTertiary,
+        // backgroundColor: colors.backgroundTertiary,
       }}
       contentContainerStyle={{
         flexGrow: 1,

@@ -6,11 +6,11 @@ import {
 import {type RouteProp} from '@react-navigation/native';
 import type {ComponentType} from 'react';
 import {useTranslation} from 'react-i18next';
+import {Pressable, StyleSheet} from 'react-native';
 
 import {Settings, Home} from '@/screens/tab-screens';
 import {useSelectedTheme} from '@/hooks/use-selected-theme';
 import {Text, View} from '@/components';
-import {Pressable, StyleSheet} from 'react-native';
 import {BackArrowIcon} from '@/svgs';
 import {useLayout} from '@/features';
 import {SIZES} from '@/constants/spacing';

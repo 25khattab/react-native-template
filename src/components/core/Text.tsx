@@ -1,7 +1,7 @@
 import {Text as RNText, TextProps as RNTextProps} from 'react-native';
 
 import {useLayout} from '@/features';
-import { useSelectedTheme } from '@/hooks/use-selected-theme';
+import {useSelectedTheme} from '@/hooks/use-selected-theme';
 
 export const Text = (props: RNTextProps) => {
   const isRTL = useLayout((state) => state.RTL);
