@@ -3,14 +3,13 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as SplashScreen from 'expo-splash-screen';
 import {StatusBar} from 'expo-status-bar';
 import {useCallback, useEffect} from 'react';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 
 import {AppNavigator} from './app-navigator';
 import {AuthNavigator} from './auth-navigator';
 
 import {useAuth, useLayout} from '@/features';
 import {useSelectedTheme} from '@/hooks';
-import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 
 const Stack = createNativeStackNavigator();
 
@@ -53,16 +52,9 @@ export const RootNavigator = () => {
   }
   return (
     <NavigationContainer theme={{dark: isDark, colors}}>
-      <SafeAreaView
-        style={{
-          flex: 1,
-          backgroundColor: colors.background,
-        }}
-      >
-        <BottomSheetModalProvider>
-          <Root />
-        </BottomSheetModalProvider>
-      </SafeAreaView>
+      <BottomSheetModalProvider>
+        <Root />
+      </BottomSheetModalProvider>
       <StatusBar style={isDark ? 'light' : 'dark'} />
     </NavigationContainer>
   );
