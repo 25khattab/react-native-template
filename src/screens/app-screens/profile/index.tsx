@@ -14,19 +14,11 @@ export const Profile = () => {
   const isRTL = useLayout((s) => s.RTL);
   const styles = generateStyles(isRTL, colors);
   return (
-    <SafeAreaView
-      style={{
-        alignSelf: 'stretch',
-        flex: 1,
-        backgroundColor: colors.background,
-      }}
-    >
-      <View style={styles.container}>
-        <Text>Profile</Text>
-        <Button title="navigate to home" onPress={() => navigate('Home')} />
-        <ThemeSwitcher />
-      </View>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <Text>Profile</Text>
+      <Button title="navigate to home" onPress={() => navigate('Home')} />
+      <ThemeSwitcher />
+    </View>
   );
 };
 

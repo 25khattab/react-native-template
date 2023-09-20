@@ -1,6 +1,7 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as SplashScreen from 'expo-splash-screen';
+import * as SystemUI from 'expo-system-ui';
 import {StatusBar} from 'expo-status-bar';
 import {useCallback, useEffect} from 'react';
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
@@ -50,15 +51,17 @@ export const RootNavigator = () => {
   const {colors, isDark} = useSelectedTheme();
   if (theme === null) {
     return null;
+  } else {
+    SystemUI.setBackgroundColorAsync(colors.background);
+    return (
+      <NavigationContainer theme={{dark: isDark, colors}}>
+        <SafeAreaProvider>
+          <BottomSheetModalProvider>
+            <Root />
+          </BottomSheetModalProvider>
+        </SafeAreaProvider>
+        <StatusBar style={isDark ? 'light' : 'dark'} />
+      </NavigationContainer>
+    );
   }
-  return (
-    <NavigationContainer theme={{dark: isDark, colors}}>
-      <SafeAreaProvider>
-        <BottomSheetModalProvider>
-          <Root />
-        </BottomSheetModalProvider>
-      </SafeAreaProvider>
-      <StatusBar style={isDark ? 'light' : 'dark'} />
-    </NavigationContainer>
-  );
 };

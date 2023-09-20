@@ -1,4 +1,5 @@
 import {useFocusEffect} from '@react-navigation/native';
+import { Platform } from 'react-native';
 import {AvoidSoftInput} from 'react-native-avoid-softinput';
 
 /**
@@ -8,18 +9,17 @@ import {AvoidSoftInput} from 'react-native-avoid-softinput';
 
 export const useSoftKeyboardEffect = () => {
   useFocusEffect(() => {
-    AvoidSoftInput.setShouldMimicIOSBehavior(false);
+    AvoidSoftInput.setShouldMimicIOSBehavior(Platform.OS==="ios");
     AvoidSoftInput.setEnabled(true);
     // AvoidSoftInput.setAvoidOffset(50);
 
-    AvoidSoftInput.setEasing('easeInOut');
-    AvoidSoftInput.setAdjustResize();
-    // AvoidSoftInput.setShowAnimationDelay(0);
-    // AvoidSoftInput.setShowAnimationDuration(0);
-    // AvoidSoftInput.setHideAnimationDuration(0);
-    // AvoidSoftInput.setHideAnimationDelay(0);
+     AvoidSoftInput.setAdjustResize();
+
+    AvoidSoftInput.setShowAnimationDelay(0);
+    AvoidSoftInput.setShowAnimationDuration(0);
+    AvoidSoftInput.setHideAnimationDuration(150);
+    AvoidSoftInput.setHideAnimationDelay(0);
     return () => {
-      AvoidSoftInput.setAdjustNothing();
       AvoidSoftInput.setAvoidOffset(0);
       AvoidSoftInput.setEnabled(false);
       AvoidSoftInput.setShouldMimicIOSBehavior(false);

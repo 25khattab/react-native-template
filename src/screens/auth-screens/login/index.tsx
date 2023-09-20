@@ -1,14 +1,14 @@
-import {Button, ScrollView, StyleSheet} from 'react-native';
-import {useTranslation} from 'react-i18next';
-import {zodResolver} from '@hookform/resolvers/zod';
-import {z} from 'zod';
-import {useForm} from 'react-hook-form';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+import { Button, ScrollView, StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { z } from 'zod';
 
-import {useAuth} from '@/features';
-import {useSelectedTheme, useSoftKeyboardEffect} from '@/hooks';
-import {ControlledInput, Input, Text, View} from '@/components';
-import {SIZES} from '@/constants/spacing';
+import { ControlledInput, Text, View } from '@/components';
+import { useAuth } from '@/features';
+import { useSelectedTheme, useSoftKeyboardEffect } from '@/hooks';
+import React from 'react';
 
 const schema = z.object({
   email: z
@@ -28,7 +28,6 @@ export type FormType = z.infer<typeof schema>;
 export const Login = () => {
   const login = useAuth((state) => state.signIn);
   const {colors} = useSelectedTheme();
-  useSoftKeyboardEffect();
   const {t} = useTranslation();
   const {handleSubmit, control} = useForm<FormType>({
     resolver: zodResolver(schema),
@@ -38,76 +37,58 @@ export const Login = () => {
     console.log(data);
     login({access: 'asss', refresh: 'ooslslslsl'});
   };
-
+  useSoftKeyboardEffect();
   return (
     <SafeAreaView
       style={{
-        alignSelf: 'stretch',
         flex: 1,
-        backgroundColor: colors.background,
       }}
     >
       <ScrollView
         style={{
           flex: 1,
-          backgroundColor: colors.background,
-        }}
-        contentContainerStyle={{
-          justifyContent: 'center',
-          padding: SIZES.medium,
-          gap: 70,
-          flexGrow: 1,
         }}
       >
-        <Text>{t('routes.Login')}</Text>
-        <Text>Write any values</Text>
-        <ControlledInput
-          control={control}
-          name="email"
-          placeholder="Email"
-          textContentType="emailAddress"
-          keyboardType="email-address"
-          label="Email"
-        />
-        <ControlledInput
-          control={control}
-          name="password"
-          // label="Password"
-          placeholder="Password"
-          textContentType="password"
-          secureTextEntry
-        />
+        <View
+          style={{
+            borderRadius: 10,
+            borderColor: colors.border,
+            alignSelf: 'stretch',
+            rowGap: 20,
+            borderWidth: 1,
+            padding: 10,
+          }}
+        >
+          <Text>{t('routes.Login')}</Text>
+          <Text>Write any values</Text>
+          <ControlledInput
+            control={control}
+            name="email"
+            placeholder="Email"
+            textContentType="emailAddress"
+            keyboardType="email-address"
+            label="Email"
+          />
 
-        <ControlledInput
-          control={control}
-          name="password"
-          // label="Password"
-          placeholder="Password"
-          textContentType="password"
-          secureTextEntry
-        />
-        <ControlledInput
-          control={control}
-          name="password"
-          // label="Password"
-          placeholder="Password"
-          textContentType="password"
-          secureTextEntry
-        />
-        <ControlledInput
-          control={control}
-          name="password"
-          // label="Password"
-          placeholder="Password"
-          textContentType="password"
-          secureTextEntry
-        />
-        <Button
-          title="login"
-          testID="login-button"
-          onPress={handleSubmit(onSubmit)}
-        />
+          <ControlledInput
+            control={control}
+            name="password"
+            label="Password"
+            placeholder="Password"
+            textContentType="password"
+            secureTextEntry
+          />
+
+          <Button
+            title="login"
+            testID="login-button"
+            onPress={handleSubmit(onSubmit)}
+          />
+        </View>
       </ScrollView>
+      {/* <Animated.View style={[buttonContainerAnimatedStyle]}>
+        
+      </Animated.View> */}
     </SafeAreaView>
   );
 };

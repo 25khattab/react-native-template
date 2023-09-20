@@ -76,7 +76,6 @@ export const TabNavigator = () => {
       screenOptions={({route}) => ({
         tabBarActiveTintColor: colors.backgroundTertiary,
         tabBarHideOnKeyboard: true,
-        // tabBarStyle:{backgroundColor:colors.background}
         tabBarStyle: {backgroundColor: colors.background},
       })}
     >
@@ -114,14 +113,7 @@ const TabHeader = (props: BottomTabHeaderProps) => {
     <SafeAreaView
       edges={['left', 'right', 'top']}
       style={{
-        alignSelf: 'stretch',
-        flex: 1,
         backgroundColor: colors.background,
-      }}
-    >
-      <View
-        style={{
-          backgroundColor: colors.background,
           flexDirection: isRTL ? 'row-reverse' : 'row',
           paddingVertical: SIZES.medium,
           paddingHorizontal: SIZES.xSmall,
@@ -129,8 +121,8 @@ const TabHeader = (props: BottomTabHeaderProps) => {
           borderColor: colors.border,
           columnGap: SIZES.xSmall,
           alignItems: 'center',
-        }}
-      >
+      }}
+    > 
         {canGoBack && (
           <Pressable
             onPress={navigateBack}
@@ -146,11 +138,9 @@ const TabHeader = (props: BottomTabHeaderProps) => {
             <BackArrowIcon supportRTL={isRTL} color={colors.text} />
           </Pressable>
         )}
-
         <Text style={{fontSize: SIZES.xLarge, fontWeight: '800'}}>
           {props.options.title}
-        </Text>
-      </View>
+        </Text> 
     </SafeAreaView>
   );
 };

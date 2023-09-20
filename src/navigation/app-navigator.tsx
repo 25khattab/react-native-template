@@ -78,7 +78,6 @@ const AppNavigatorHeader = (props: NativeStackHeaderProps) => {
       edges={['left', 'right', 'top']}
       style={{
         alignSelf: 'stretch',
-        flex: 1,
         backgroundColor: colors.background,
       }}
     >
